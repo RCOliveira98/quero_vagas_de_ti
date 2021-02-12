@@ -1,24 +1,14 @@
-# README
+# QueroVagasDeTI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto faz parte do treinamento da [**campus code**](https://campuscode.com.br/), turma 5 do programa **[TreinaDev](https://treinadev.com.br/)**. O desafio consiste na criação de uma plataforma Web para que pessoas dos departamentos de RH de empresas criem vagas e sejam capazes de gerenciar todo processo de forma colaborativa. Além disso, a plataforma funciona como um site de busca de oportunidades para os visitantes. Um visitante pode conhecer empresas, ver suas vagas disponíveis e aplicar para estas vagas.
 
-Things you may want to cover:
+Ferramentas necessárias:
 
-* Ruby version
+* [Ruby](https://www.ruby-lang.org/pt/) Versão 2.7.0 
 
-* System dependencies
+* [Rails](https://guides.rubyonrails.org/) Versão ~> 6.1.1
 
-* Configuration
+* [Bulma](https://bulma.io/) Versão 0.9.2
 
-* Database creation
+* SQLite
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
