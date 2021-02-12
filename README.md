@@ -22,6 +22,7 @@ cadastrar;
 * [Rails](https://guides.rubyonrails.org/) Versão ~> 6.1.1
 * [Bulma](https://bulma.io/) Versão 0.9.2
 * SQLite
+* [Devise](https://github.com/heartcombo/devise)
 
 ## Modelagem e gerenciamento de atividades
 
