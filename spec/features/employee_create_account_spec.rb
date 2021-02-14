@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'util_module_app'
+
 feature 'employee create account' do
 
   scenario 'Success' do
@@ -116,6 +118,34 @@ feature 'employee create account' do
     expect(page).not_to have_content('romario.ti@rco.com.br')
     expect(page).not_to have_content('Sair')
   
+  end
+
+  scenario 'non-corporate email' do
+    include UtilModuleApp
+    Employee.create!(email: 'romario.ti@rco.com.br', password: '123456')
+    emails = UtilModuleApp::NON_CORPORATE_EMAILS
+  
+    visit root_path
+
+    click_on 'Criar conta'
+
+    expect(current_path).to eq new_employee_registration_path()
+
+    emails.each do |email_key, email_value|
+      expect(page).to have_content('Novo usuário')
+    
+      within('form') do
+        fill_in 'E-mail', with: "romario.ti#{email_value}"
+        fill_in 'Senha', with: '654321'
+        fill_in 'Confirmação de senha', with: '654321'
+        click_on 'Cadastrar'
+      end
+
+      expect(page).to have_content('Esse e-mail não é corporativo!')
+      expect(page).not_to have_content('Bem vindo! Você realizou seu registro com sucesso')
+      expect(page).not_to have_content("romario.ti#{email_value}")
+      expect(page).not_to have_content('Sair')
+    end
   end
 
 end
