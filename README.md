@@ -21,8 +21,13 @@ cadastrar;
 * [Ruby](https://www.ruby-lang.org/pt/) Versão 2.7.0 
 * [Rails](https://guides.rubyonrails.org/) Versão ~> 6.1.1
 * [Bulma](https://bulma.io/) Versão 0.9.2
-* SQLite
+* [SQLite](https://www.sqlite.org/index.html)
 * [Devise](https://github.com/heartcombo/devise)
+
+## Testes
+
+- Rspec -> [rails-spec](https://github.com/rspec/rspec-rails)
+- [Capybara](https://github.com/teamcapybara/capybara)
 
 ## Modelagem e gerenciamento de atividades
 

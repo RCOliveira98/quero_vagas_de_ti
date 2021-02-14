@@ -15,6 +15,8 @@ class Employees::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     if corporate_email?()
+      company = create_company()
+      insert_company_in_params(company.id)
       super
     else
       flash[:alert] = 'Esse e-mail não é corporativo!'
@@ -50,12 +52,12 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute, :company_id])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute, :company_id])
   end
 
   # The path used after sign up.
@@ -74,7 +76,7 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
       employee_email = params[:employee][:email].downcase
       
-      email_list.each do |key, email|
+      invalid_email_suffixes.each do |key, email|
         return false if employee_email.include? email
       end
       return true
@@ -82,12 +84,30 @@ class Employees::RegistrationsController < Devise::RegistrationsController
     false
   end
 
-  def email_list
+  def invalid_email_suffixes
     UtilModuleApp::NON_CORPORATE_EMAILS
   end
 
   def parameter_email_exists?
     params[:employee] && params[:employee][:email]
+  end
+
+  def insert_company_in_params(company_id)
+    params[:employee][:company_id] = company_id
+  end
+
+  def email_suffix
+    params_email = String.new params[:employee][:email]
+
+    index = params_email.index('@')
+
+    size = params_email.size
+
+    params_email[index..size]
+  end
+
+  def create_company
+    Company.find_or_create(email_suffix())
   end
 
 end
