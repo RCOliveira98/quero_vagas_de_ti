@@ -18,6 +18,7 @@ class Employees::RegistrationsController < Devise::RegistrationsController
       company = create_company()
       insert_company_in_params(company.id)
       super
+      check_admin()
     else
       flash[:alert] = 'Esse e-mail não é corporativo!'
       redirect_to new_employee_registration_path
@@ -108,6 +109,10 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
   def create_company
     Company.find_or_create(email_suffix())
+  end
+
+  def check_admin
+    CompanyAdmin.create_or_find_admin(resource)
   end
 
 end
