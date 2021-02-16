@@ -13,7 +13,8 @@ class CompaniesController < ApplicationController
 
     def update
         if @company.update(company_params())
-            redirect_to company_path(@company)
+            flash[:notice] = 'Perfil atualizado!'
+            redirect_to profile_company_path(@company)
         else
             render :edit
         end

@@ -1,5 +1,8 @@
 class Company < ApplicationRecord
     validates :email_suffix, presence: true
+    validates :name, presence: true, on: :update
+    validates :cnpj, presence: true, on: :update
+    
     has_many :employees
     has_one_attached :logo
 

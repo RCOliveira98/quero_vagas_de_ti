@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="columns is-centered">
+        <%= form_with(model: @company, local: true) do |form| %>
+
+            <% if @company.errors.any? %>
+                <p class="has-text-danger">Encontramos o(s) seguinte(s) erro(s):</p>
+                <div class="notification is-danger is-light">
+                    <ol>
+                        <% @company.errors.full_messages.each do |message| %>
+                            <li><strong><%= message %></strong></li>
+                        <% end %>
+                    </ol>
+                </div>
+            <% end %>
+
+            <div class="field">
+                <%= form.label :name, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :name, class: 'input'%>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :cnpj, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :cnpj, class: 'input' %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :email_suffix, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :email_suffix, class: 'input', readonly: true %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :site, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :site, class: 'input' %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :country, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :country, class: 'input' %>
+                </div>
+            </div>
+
+            
+            <div class="field">
+                <%= form.label :state, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :state, class: 'input' %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :city, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :city, class: 'input' %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :zip_code, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :zip_code, class: 'input' %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :neighborhood, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :neighborhood, class: 'input' %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :logradouro, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :logradouro, class: 'input' %>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <%= form.submit button_title, class: 'button is-link' %>
+                </div>
+            </div>
+
+        <% end %>
+    </div>
+</div>

@@ -14,3 +14,15 @@ pt-BR:
         email: E-mail
         password: Senha
         password_confirmation: Confirmação de senha
+      company:
+        id: Id
+        name: Nome
+        cnpj: Cnpj
+        site: Site
+        country: País
+        state: Estado
+        city: Cidade
+        email_suffix: Sufixo de e-mail
+        zip_code: Cep
+        neighborhood: Bairro
+        logradouro: Logradouro
