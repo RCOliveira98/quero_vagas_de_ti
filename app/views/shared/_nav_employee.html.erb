@@ -32,7 +32,9 @@
         <div class="navbar-item">
           <div class="buttons">
             <button class="button is-light"><%= current_employee.email %></button>
-
+            <% if current_employee.admin? %>
+              <%= link_to  "perfil da empresa", profile_company_path(current_employee.admin_company_id), class: 'button is-light' %>
+            <% end %>
             <%= link_to  "Sair", destroy_employee_session_path(), method: :delete, class: "button is-danger" %>
           </div>
         </div>

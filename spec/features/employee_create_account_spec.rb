@@ -97,7 +97,7 @@ feature 'employee create account' do
   end
 
   scenario 'the email is already being used' do
-    company = Company.create!(email_sufix: 'rco.com.br')
+    company = Company.create!(email_suffix: 'rco.com.br')
     Employee.create!(email: 'romario.ti@rco.com.br', password: '123456', company: company)
     visit root_path
 
@@ -123,7 +123,7 @@ feature 'employee create account' do
 
   scenario 'non-corporate email' do
     include UtilModuleApp
-    company = Company.create!(email_sufix: 'rco.com.br')
+    company = Company.create!(email_suffix: 'rco.com.br')
     Employee.create!(email: 'romario.ti@rco.com.br', password: '123456', company: company)
     emails = UtilModuleApp::NON_CORPORATE_EMAILS
   

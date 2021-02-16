@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'employee login' do
     scenario 'e-mail invalid' do
-        company = Company.create!(email_sufix: '@treinadev.com.br')
+        company = Company.create!(email_suffix: '@treinadev.com.br')
         Employee.create!(email: 'rco@treinadev.com.br', password: '123456', company: company)
 
         visit root_path
@@ -22,7 +22,7 @@ feature 'employee login' do
     end
 
     scenario 'password invalid' do
-        company = Company.create!(email_sufix: '@treinadev.com.br')
+        company = Company.create!(email_suffix: '@treinadev.com.br')
         Employee.create!(email: 'rco@treinadev.com.br', password: '123456', company: company)
 
         visit root_path
@@ -81,7 +81,7 @@ feature 'employee login' do
     end
 
     scenario 'success' do
-        company = Company.create!(email_sufix: '@treinadev.com.br')
+        company = Company.create!(email_suffix: '@treinadev.com.br')
         employee = Employee.create!(email: 'rco@treinadev.com.br', password: '123456', company: company)
 
         visit root_path
@@ -101,7 +101,7 @@ feature 'employee login' do
     end
 
     scenario 'logout' do
-        company = Company.create!(email_sufix: '@treinadev.com.br')
+        company = Company.create!(email_suffix: '@treinadev.com.br')
         employee = Employee.create!(email: 'rco@treinadev.com.br', password: '123456', company: company)
 
         visit root_path

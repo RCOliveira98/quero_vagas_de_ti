@@ -10,7 +10,7 @@ RSpec.describe Company, type: :model do
   end
 
   it 'is valid with an email suffix' do
-    company = Company.new(email_sufix: '@rebase.com.br')
+    company = Company.new(email_suffix: '@rebase.com.br')
 
     expect(company.valid?).to eq true
   end
@@ -18,12 +18,12 @@ RSpec.describe Company, type: :model do
 
  describe '.find_or_create' do
   it 'find' do
-    Company.create!(email_sufix: '@rebase.com.br')
-    Company.create!(email_sufix: '@vindi.com.br')
-    Company.create!(email_sufix: '@portalsolar.com.br')
-    smartfit_company = Company.create!(email_sufix: '@smartfit.com.br')
-    Company.create!(email_sufix: '@konduto.com.br')
-    different_company = Company.create!(email_sufix: '@campuscode.com.br')
+    Company.create!(email_suffix: '@rebase.com.br')
+    Company.create!(email_suffix: '@vindi.com.br')
+    Company.create!(email_suffix: '@portalsolar.com.br')
+    smartfit_company = Company.create!(email_suffix: '@smartfit.com.br')
+    Company.create!(email_suffix: '@konduto.com.br')
+    different_company = Company.create!(email_suffix: '@campuscode.com.br')
 
     company_found = Company.find_or_create('@smartfit.com.br')
 
@@ -32,11 +32,11 @@ RSpec.describe Company, type: :model do
   end
 
   it 'create' do
-    rebase_company = Company.create!(email_sufix: '@rebase.com.br')
-    vindi_company = Company.create!(email_sufix: '@vindi.com.br')
-    portal_solar_company = Company.create!(email_sufix: '@portalsolar.com.br')
-    smartfit_company = Company.create!(email_sufix: '@smartfit.com.br')
-    konduto_company = Company.create!(email_sufix: '@konduto.com.br')
+    rebase_company = Company.create!(email_suffix: '@rebase.com.br')
+    vindi_company = Company.create!(email_suffix: '@vindi.com.br')
+    portal_solar_company = Company.create!(email_suffix: '@portalsolar.com.br')
+    smartfit_company = Company.create!(email_suffix: '@smartfit.com.br')
+    konduto_company = Company.create!(email_suffix: '@konduto.com.br')
 
     company_created = Company.find_or_create('@campuscode.com.br')
 
