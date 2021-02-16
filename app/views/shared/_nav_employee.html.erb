@@ -28,21 +28,44 @@
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <% if employee_signed_in? %>
+      <% if employee_signed_in? %>
+        <div class="navbar-item">
+          <div class="buttons">
             <button class="button is-light"><%= current_employee.email %></button>
-            <a class="button is-danger">
-              Sair
-            </a>
-          <% else %>
-            <%= link_to  "Criar conta", new_employee_registration_path(), class: "button is-primary" %>
-            <a class="button is-light">
-              Entrar
-            </a>
-          <% end %>
+
+            <%= link_to  "Sair", destroy_employee_session_path(), method: :delete, class: "button is-danger" %>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <div class="navbar-item has-dropdown is-hoverable">
+
+          <a class="navbar-link">
+            Criar conta
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">Candidatar-se a vagas?</a>
+            <hr class="navbar-divider">
+            <%= link_to  "Divulgar vagas?", new_employee_registration_path(), class: "navbar-item" %>
+          </div>
+          
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+
+          <a class="navbar-link">
+            Entrar
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">Candidato</a>
+            <hr class="navbar-divider">
+            <%= link_to  "Recrutador", new_employee_session_path, class: "navbar-item" %>
+          </div>
+          
+        </div>
+       
+      <% end %>
     </div>
   </div>
 </nav>

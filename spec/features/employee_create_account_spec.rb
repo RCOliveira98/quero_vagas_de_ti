@@ -7,7 +7,7 @@ feature 'employee create account' do
   scenario 'Success' do
     visit root_path
 
-    click_on 'Criar conta'
+    click_on 'Divulgar vagas'
 
     expect(current_path).to eq new_employee_registration_path()
 
@@ -30,7 +30,7 @@ feature 'employee create account' do
   scenario 'password confirmation failed' do
     visit root_path
 
-    click_on 'Criar conta'
+    click_on 'Divulgar vagas'
 
     expect(current_path).to eq new_employee_registration_path()
 
@@ -53,7 +53,7 @@ feature 'employee create account' do
   scenario 'the password is too short' do
     visit root_path
 
-    click_on 'Criar conta'
+    click_on 'Divulgar vagas'
 
     expect(current_path).to eq new_employee_registration_path()
 
@@ -76,7 +76,7 @@ feature 'employee create account' do
   scenario 'Password cannot be empty' do
     visit root_path
 
-    click_on 'Criar conta'
+    click_on 'Divulgar vagas'
 
     expect(current_path).to eq new_employee_registration_path()
 
@@ -97,10 +97,11 @@ feature 'employee create account' do
   end
 
   scenario 'the email is already being used' do
-    Employee.create!(email: 'romario.ti@rco.com.br', password: '123456')
+    company = Company.create!(email_sufix: 'rco.com.br')
+    Employee.create!(email: 'romario.ti@rco.com.br', password: '123456', company: company)
     visit root_path
 
-    click_on 'Criar conta'
+    click_on 'Divulgar vagas'
 
     expect(current_path).to eq new_employee_registration_path()
 
@@ -122,12 +123,13 @@ feature 'employee create account' do
 
   scenario 'non-corporate email' do
     include UtilModuleApp
-    Employee.create!(email: 'romario.ti@rco.com.br', password: '123456')
+    company = Company.create!(email_sufix: 'rco.com.br')
+    Employee.create!(email: 'romario.ti@rco.com.br', password: '123456', company: company)
     emails = UtilModuleApp::NON_CORPORATE_EMAILS
   
     visit root_path
 
-    click_on 'Criar conta'
+    click_on 'Divulgar vagas'
 
     expect(current_path).to eq new_employee_registration_path()
 
