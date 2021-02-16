@@ -99,4 +99,25 @@ feature 'employee login' do
         expect(page).to have_content('Login efetuado com sucesso')
         expect(page).to have_content('Sair')
     end
+
+    scenario 'logout' do
+        company = Company.create!(email_sufix: '@treinadev.com.br')
+        employee = Employee.create!(email: 'rco@treinadev.com.br', password: '123456', company: company)
+
+        visit root_path
+        click_on 'Recrutador'
+
+        expect(current_path).to eq new_employee_session_path()
+        expect(page).to have_content('Autenticação')
+
+        within('form') do
+            fill_in 'E-mail', with: employee.email
+            fill_in 'Senha', with: '123456'
+            click_on 'Entrar'
+        end
+
+        click_on 'Sair'
+        expect(page).to have_content('Criar conta')
+        expect(page).to have_content('Entrar')
+    end
 end
