@@ -6,9 +6,9 @@ feature 'administrator accesses company profile' do
         Company.create!(email_suffix: '@treinadev.com.br')
         employee = Employee.create!(email: 'rco@treinadev.com.br', password: '123456', company_id: 1)
 
-        visit profile_company_path(id: 1)
+        visit profile_employees_backoffice_company_path(id: 1)
 
-        expect(current_path).not_to eq profile_company_path(id: 1)
+        expect(current_path).not_to eq profile_employees_backoffice_company_path(id: 1)
         expect(current_path).to eq new_employee_session_path()
     end
 
@@ -23,7 +23,7 @@ feature 'administrator accesses company profile' do
         visit root_path
         click_on 'perfil da empresa'
 
-        expect(current_path).to eq profile_company_path(id: 1)
+        expect(current_path).to eq profile_employees_backoffice_company_path(id: 1)
 
         expect(page).to have_content(company.email_suffix)
         expect(page).to have_content(company.name)

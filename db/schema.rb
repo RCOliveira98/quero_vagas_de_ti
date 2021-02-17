@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_124007) do
+ActiveRecord::Schema.define(version: 2021_02_17_220705) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,8 +79,44 @@ ActiveRecord::Schema.define(version: 2021_02_16_124007) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "job_requirements", force: :cascade do |t|
+    t.integer "job_id", null: false
+    t.integer "requirement_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_job_requirements_on_job_id"
+    t.index ["requirement_id"], name: "index_job_requirements_on_requirement_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.integer "employee_id", null: false
+    t.string "title"
+    t.text "description"
+    t.decimal "lowest_salary"
+    t.decimal "highest_salary"
+    t.integer "level"
+    t.integer "quantity"
+    t.datetime "deadline_for_registration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["employee_id"], name: "index_jobs_on_employee_id"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "company_admins", "companies"
   add_foreign_key "company_admins", "employees"
+  add_foreign_key "job_requirements", "jobs"
+  add_foreign_key "job_requirements", "requirements"
+  add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "employees"
 end
