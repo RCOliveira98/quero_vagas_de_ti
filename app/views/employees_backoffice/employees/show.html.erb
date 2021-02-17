@@ -25,7 +25,9 @@
 
     <div class="card-footer">
         <div class="card-footer-item">
-            <%= link_to  "Editar", '#', class: "button is-link" %>
+            <%= link_to  "Editar",
+                edit_employees_backoffice_employee_path(@employee),
+                class: "button is-link" %>
         </div>
     </div>
 </div>

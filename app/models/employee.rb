@@ -4,6 +4,8 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, presence: true, on: %i[update]
+
   belongs_to :company
   has_one :company_admin
 

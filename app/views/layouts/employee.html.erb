@@ -13,9 +13,22 @@
   <body>
     <%= render "shared/nav_employee" %>
 
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div class="container mb-1">
+      <% if alert %>
+        <article class="message is-danger">
+          <div class="message-body">
+            <%= alert %>
+          </div>
+        </article>
+      <% end %>
+
+      <% if notice %>
+        <article class="message is-info">
+          <div class="message-body">
+            <%= notice %>
+          </div>
+        </article>
+      <% end %>
     </div>
     <div class="container">
       <%= yield %>

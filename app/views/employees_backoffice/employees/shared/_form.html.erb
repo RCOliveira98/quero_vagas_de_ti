@@ -1,0 +1,41 @@
+<%= form_with(model: [:employees_backoffice, @employee], local: true) do |form| %>
+    <div class="columns is-multiline">
+
+        <% if @employee.errors.any? %>
+            <div class="column is-12">
+                <p class="has-text-danger">Encontramos o(s) seguinte(s) erro(s):</p>
+                <div class="notification is-danger is-light">
+                    <ol>
+                        <% @employee.errors.full_messages.each do |message| %>
+                            <li><strong><%= message %></strong></li>
+                        <% end %>
+                    </ol>
+                </div>
+            </div>
+        <% end %>
+
+        <div class="column is-6-widescreen is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+                <%= form.label :name, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :name, class: 'input' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6-widescreen is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+                <%= form.label :email, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :email, class: 'input', readonly: true %>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-12">
+            <div class="control">
+                <%= form.submit button_title, class: 'button is-link' %>
+            </div>
+        </div>
+    </div>
+<% end %>
