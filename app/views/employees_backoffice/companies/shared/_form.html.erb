@@ -1,6 +1,6 @@
 <div class="container">
     <div class="columns is-centered">
-        <%= form_with(model: @company, local: true) do |form| %>
+        <%= form_with(model: [:employees_backoffice, @company], local: true) do |form| %>
 
             <% if @company.errors.any? %>
                 <p class="has-text-danger">Encontramos o(s) seguinte(s) erro(s):</p>

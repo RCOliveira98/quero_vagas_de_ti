@@ -1,4 +1,4 @@
-class CompaniesController < ApplicationController
+class EmployeesBackoffice::CompaniesController < ApplicationController
     before_action :company_find, only: %i[show profile edit update]
     before_action :authenticate_employee!, except: %i[show]
 
@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
     def update
         if @company.update(company_params())
             flash[:notice] = 'Perfil atualizado!'
-            redirect_to profile_company_path(@company)
+            redirect_to profile_employees_backoffice_company_path(@company)
         else
             render :edit
         end

@@ -26,7 +26,7 @@ feature 'admin edits company profile' do
       click_on 'Atualizar'
     end
 
-    expect(current_path).to eq profile_company_path(id: 1)
+    expect(current_path).to eq profile_employees_backoffice_company_path(id: 1)
     expect(page).to have_content('Perfil atualizado!')
 
   end
@@ -77,7 +77,7 @@ feature 'admin edits company profile' do
       click_on 'Atualizar'
     end
 
-    expect(current_path).to eq profile_company_path(id: 1)
+    expect(current_path).to eq profile_employees_backoffice_company_path(id: 1)
     expect(page).to have_content('Perfil atualizado!')
     expect(page).to have_css('img[src*="logotipo.png"]')
   end
