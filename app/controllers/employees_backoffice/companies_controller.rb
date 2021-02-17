@@ -1,4 +1,4 @@
-class EmployeesBackoffice::CompaniesController < ApplicationController
+class EmployeesBackoffice::CompaniesController < EmployeesBackofficeController
     before_action :company_find, only: %i[show profile edit update]
     before_action :authenticate_employee!, except: %i[show]
 

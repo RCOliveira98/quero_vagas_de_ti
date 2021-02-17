@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        <div class="card-header-title"><h1>Perfil do usuário</h1></div>
+    </div>
+
+    <div class="card-content">
+        <div class="columns is-multiline">
+            <div class="column is-6">
+                <p>E-mail: <strong><%= @employee.email %></strong></p>
+            </div>
+
+            <div class="column is-6">
+                <p>Nome: <strong><%= @employee.name %></strong></p>
+            </div>
+
+            <div class="column is-6">
+                <p>Criado em: <strong><%= l @employee.created_at, :format => :long %></strong></p>
+            </div>
+
+            <div class="column is-6">
+                <p>Atualizado em: <strong><%= l @employee.updated_at, :format => :long %></strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="card-footer-item">
+            <%= link_to  "Editar", '#', class: "button is-link" %>
+        </div>
+    </div>
+</div>

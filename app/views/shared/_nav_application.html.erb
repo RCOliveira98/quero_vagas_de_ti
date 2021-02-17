@@ -33,7 +33,19 @@
           <div class="buttons">
             <button class="button is-light"><%= current_employee.email %></button>
             <% if current_employee.admin? %>
-              <%= link_to  "perfil da empresa", profile_employees_backoffice_company_path(current_employee.admin_company_id), class: 'button is-light' %>
+              <div class="navbar-item has-dropdown is-hoverable">
+
+                <a class="navbar-link">
+                  Perfil
+                </a>
+
+                <div class="navbar-dropdown">
+                  <%= link_to  "perfil do usuário", employees_backoffice_employee_path(current_employee), class: 'navbar-item' %>
+                  <hr class="navbar-divider">
+                  <%= link_to  "perfil da empresa", profile_employees_backoffice_company_path(current_employee.admin_company_id), class: 'navbar-item' %>
+                </div>
+                
+              </div>
             <% end %>
             <%= link_to  "Sair", destroy_employee_session_path(), method: :delete, class: "button is-danger" %>
           </div>
@@ -48,7 +60,7 @@
           <div class="navbar-dropdown">
             <a class="navbar-item">Candidatar-se a vagas?</a>
             <hr class="navbar-divider">
-            <%= link_to  "Divulgar vagas?", new_employee_registration_path(), class: "navbar-item" %>
+            <%= link_to "Divulgar vagas?", new_employee_registration_path(), class: "navbar-item" %>
           </div>
           
         </div>
