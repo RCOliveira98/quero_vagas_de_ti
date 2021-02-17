@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'collaborator edit your profile' do
+feature 'collaborator show your profile' do
     
     scenario 'Success' do
         company = Company.create!(email_suffix: '@americanas.com.br')
