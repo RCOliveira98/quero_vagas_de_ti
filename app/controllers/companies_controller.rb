@@ -29,6 +29,6 @@ class CompaniesController < ApplicationController
     def company_params
         params.require(:company).permit(:name, :cnpj, :email_suffix,
                                         :site, :country, :state, :city,
-                                        :zip_code, :neighborhood, :logradouro)
+                                        :zip_code, :neighborhood, :logradouro, :avatar)
     end
 end

@@ -5,7 +5,13 @@
 
   <div class="card">
     <div class="card-header">
-      <diV class="card-header-title">Nome: <%= @company.name %></diV>
+      <div class="card-header-title">Nome: <%= @company.name %></div>
+
+      <% if @company.avatar.attached? %>
+        <div class="card-header-icon">
+          <%= image_tag @company.avatar, class: 'image is-96x96' %>
+        </div>
+      <% end %>
     </div>
 
     <div class="card-body p-2">
