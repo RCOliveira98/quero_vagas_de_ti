@@ -3,7 +3,7 @@ class EmployeesBackoffice::JobsController < EmployeesBackofficeController
     before_action :select_levels, only: %i[new]
 
     def index
-        @jobs = Job.includes(:company)
+        @jobs = Job.select_unexpired_jobs_for_a_company(current_employee.company_id)
     end
 
     def new
