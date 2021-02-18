@@ -31,7 +31,10 @@
       <% if employee_signed_in? %>
         <div class="navbar-item">
           <div class="buttons">
-            <button class="button is-light"><%= current_employee.email %></button>
+            <button class="button is-light">
+              <%= current_employee.email %>
+            </button>
+
             <% if current_employee.admin? %>
               <div class="navbar-item has-dropdown is-hoverable">
 
@@ -47,7 +50,11 @@
                 
               </div>
             <% end %>
-            <%= link_to  "Sair", destroy_employee_session_path(), method: :delete, class: "button is-danger" %>
+            
+            <%= button_to destroy_employee_session_path, method: :delete, class: "button is-danger" do %>
+              <i class="fas fa-sign-out-alt"></i> Sair
+            <% end %>
+
           </div>
         </div>
       <% else %>
@@ -81,6 +88,7 @@
        
       <% end %>
     </div>
+
   </div>
 </nav>
 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :employees, controllers: {
     registrations: 'employees/registrations'
   }
+  
   namespace :employees_backoffice do
     resources :employees, only: %i[show edit update]
 

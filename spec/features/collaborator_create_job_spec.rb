@@ -16,7 +16,7 @@ feature 'collaborator create job' do
         login_as(employee, scope: :employee)
 
         visit root_path()
-        within('nav') do
+        find('nav') do
             expect(page).to have_link('Vagas')
             click_on('Vagas')
         end
@@ -27,7 +27,7 @@ feature 'collaborator create job' do
         expect(current_path()).to eq(new_employees_backoffice_job_path())
         expect(page).to have_content('Nova vaga de trabalho')
 
-        within('form') do
+        find('form') do
             fill_in('Título', with: '')
             fill_in('Descrição', with: '')
             fill_in('Menor salário', with: '')
@@ -36,7 +36,7 @@ feature 'collaborator create job' do
             click_on 'Cadastrar'
         end
 
-        within('div .notification') do
+        find('div .notification') do
             expect(page).to have_content('Título não pode ficar em branco')
             expect(page).to have_content('Descrição não pode ficar em branco')
             expect(page).to have_content('Menor salário não pode ficar em branco')
@@ -75,7 +75,7 @@ feature 'collaborator create job' do
         visit new_employees_backoffice_job_path()
         expect(page).to have_content('Nova vaga de trabalho')
 
-        within('form') do
+        find('form') do
             fill_in('Título', with: 'Desenvolvedor Rails')
             fill_in('Descrição', with: 'Vaga para atuar como desenvolvedor ruby on rails na empresa x')
             fill_in('Menor salário', with: 2000)

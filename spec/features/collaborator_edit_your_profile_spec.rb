@@ -19,7 +19,7 @@ feature 'collaborator edit your profile' do
         click_link 'Editar'
 
         expect(current_path).to eq(edit_employees_backoffice_employee_path(employee))
-        within('form') do
+        find('form') do
             fill_in('E-mail', with: employee.email)
             fill_in('Nome', with: 'Romário Coelho Oliveira')
             click_on 'Atualizar'
@@ -53,7 +53,7 @@ feature 'collaborator edit your profile' do
         click_link 'Editar'
 
         expect(current_path).to eq(edit_employees_backoffice_employee_path(employee))
-        within('form') do
+        find('form') do
             fill_in('E-mail', with: employee.email)
             fill_in('Nome', with: '')
             click_on 'Atualizar'

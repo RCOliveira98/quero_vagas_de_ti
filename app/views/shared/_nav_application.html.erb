@@ -47,7 +47,9 @@
                 
               </div>
             <% end %>
-            <%= link_to  "Sair", destroy_employee_session_path(), method: :delete, class: "button is-danger" %>
+            <%= button_to destroy_employee_session_path, method: :delete, class: "button is-danger" do %>
+              <i class="fas fa-sign-out-alt"></i> Sair
+            <% end %>
           </div>
         </div>
       <% else %>
