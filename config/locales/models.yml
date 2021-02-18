@@ -7,6 +7,10 @@ pt-BR:
       company:
         one: Empresa
         other: Empresas
+      job:
+        one: Vaga
+        other: Vagas
+
     attributes:
       employee:
         id: Id
@@ -27,3 +31,13 @@ pt-BR:
         neighborhood: Bairro
         logradouro: Logradouro
         avatar: Avatar
+      job:
+        id: Id
+        title: Título
+        description: Descrição
+        level: Nível
+        quantity: Quantidade
+        lowest_salary: Menor salário
+        highest_salary: Maior salário
+        deadline_for_registration: Prazo para inscrição
+        requirements: Requisitos

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   }
   namespace :employees_backoffice do
     resources :employees, only: %i[show edit update]
+
+    resources :jobs, only: %i[index new create show edit update]
     
     resources :companies, only: %i[show edit update] do
       member do

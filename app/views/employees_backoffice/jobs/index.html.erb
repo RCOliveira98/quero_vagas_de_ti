@@ -1,0 +1,32 @@
+<h1>Vagas de trabalho</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= Job.human_attribute_name("title") %></th>
+      <th><%= Job.human_attribute_name("description") %></th>
+      <th><%= Job.human_attribute_name("level") %></th>
+      <th><%= Job.human_attribute_name("quantity") %></th>
+      <th><%= Job.human_attribute_name("deadline_for_registration") %></th>
+      <th><%= link_to  "Cadastrar vaga", new_employees_backoffice_job_path(), class: 'button is-success' %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.title %></td>
+      <td><%= job.description %></td>
+      <td><%= job.level %></td>
+      <td><%= job.quantity %></td>
+      <td><%= job.deadline_for_registration %></td>
+      <td>
+        <div class="buttons">
+            <button class="button is-warning">Editar</button>
+            <button class="button is-link">Ver+</button>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

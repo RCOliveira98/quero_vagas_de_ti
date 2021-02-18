@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 require('@fortawesome/fontawesome-free/js/all.js');
+require('bulma-calendar/dist/js/bulma-calendar-min.js')
 
 Rails.start()
 Turbolinks.start()

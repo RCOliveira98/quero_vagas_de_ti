@@ -1,0 +1,96 @@
+<%= form_with(model: [:employees_backoffice, @job], local: true) do |form| %>
+    
+    <div class="columns is-multiline">
+        <div class="column is-12">
+            <% if @job.errors.any? %>
+                <p class="has-text-danger">Encontramos o(s) seguinte(s) erro(s):</p>
+                <div class="notification is-danger is-light">
+                    <ol>
+                        <% @job.errors.full_messages.each do |message| %>
+                            <li><strong><%= message %></strong></li>
+                        <% end %>
+                    </ol>
+                </div>
+            <% end %>
+        </div>
+        <div class="column is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+                <%= form.label :title, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :title, class: 'input' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+                <%= form.label :description, class: 'label' %>
+                <div class="control">
+                    <%= form.text_field :description, class: 'input' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-4-fullhd is-4-desktop is-4-tablet is-6-mobile">
+            <div class="field">
+                <%= form.label :lowest_salary, class: 'label' %>
+                <div class="control">
+                    <%= form.number_field :lowest_salary, class: 'input' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-4-fullhd is-4-desktop is-4-tablet is-6-mobile">
+            <div class="field">
+                <%= form.label :highest_salary, class: 'label' %>
+                <div class="control">
+                    <%= form.number_field :highest_salary, class: 'input' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-4-fullhd is-4-desktop is-4-tablet is-6-mobile">
+            <div class="field">
+                <%= form.label :quantity, class: 'label' %>
+                <div class="control">
+                    <%= form.number_field :quantity, class: 'input' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-4-fullhd is-4-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+                <%= form.label :level, class: 'label' %>
+                <div class="control">
+                    <div class="select">
+                        <%= form.collection_select :level, @levels.map{ |level| [level.first, level.first.humanize] }, :first, :second %>
+                        <%#= form.collection_select(:level, @levels, :second, :first) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-8-fullhd is-8-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+                <%= form.label :deadline_for_registration, class: 'label' %>
+                <div class="control">
+                    <%= form.datetime_select :deadline_for_registration %>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-12 mt-1">
+            <%= form.label :requirements, class: 'label' %>
+            <%= form.collection_check_boxes(:requirement_ids, Requirement.all, :id, :title, {}, class: 'm-1') %>
+        </div>
+
+        <div class="column is-12">
+            <div class="buttons">
+                <%= form.submit button_title, class: 'button is-link' %>
+
+                <%= link_to 'Voltar', employees_backoffice_jobs_path, class: 'button is-dark' %>
+            </div>
+        </div>
+        
+    </div>
+<% end %>
