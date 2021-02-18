@@ -14,4 +14,8 @@ class Job < ApplicationRecord
       "company_id = ? AND deadline_for_registration >= ?", company_id, Time.now
     )
   end
+
+  def creator_of_the_same_company?(company_aux_id)
+    company_id == company_aux_id
+  end
 end

@@ -14,7 +14,7 @@
 
   <tbody>
     <% @jobs.each do |job| %>
-    <tr>
+    <tr id="tr_<%= job.id %>">
       <td><%= job.title %></td>
       <td><%= job.description %></td>
       <td><%= job.level %></td>
@@ -22,8 +22,12 @@
       <td><%= job.deadline_for_registration %></td>
       <td>
         <div class="buttons">
-            <button class="button is-warning">Editar</button>
-            <button class="button is-link">Ver+</button>
+          <%= link_to edit_employees_backoffice_job_path(job), class: 'button is-warning' do %>
+            <i class="fas fa-edit"></i> Editar
+          <% end %>
+          <%= link_to employees_backoffice_job_path(job), class: "button is-link" do %>
+            <i class="fa fa-eye" aria-hidden="true"></i> Visualizar
+          <% end %>
         </div>
       </td>
     </tr>

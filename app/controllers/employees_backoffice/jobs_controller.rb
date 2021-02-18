@@ -1,6 +1,7 @@
 class EmployeesBackoffice::JobsController < EmployeesBackofficeController
     before_action :authenticate_employee!
-    before_action :select_levels, only: %i[new]
+    before_action :select_levels, only: %i[new edit]
+    before_action :job_find, only: %i[show edit update]
 
     def index
         @jobs = Job.select_unexpired_jobs_for_a_company(current_employee.company_id)
@@ -24,6 +25,23 @@ class EmployeesBackoffice::JobsController < EmployeesBackofficeController
         end
     end
 
+    def edit
+        unless @job.creator_of_the_same_company?(current_employee.company_id)
+            flash[:alert] = 'As vagas de uma empresa só podem ser atualizadas por seus funcionários'
+            redirect_to employees_backoffice_jobs_path
+        end
+    end
+
+    def update
+        if @job.update(job_params())
+            flash[:notice] = 'Vaga de trabalho atualizada com sucesso'
+            redirect_to employees_backoffice_jobs_path
+        else
+            select_levels()
+            render :edit
+        end
+    end
+
     private
 
     def select_levels
@@ -42,5 +60,9 @@ class EmployeesBackoffice::JobsController < EmployeesBackofficeController
                                     :employee_id,
                                     requirement_ids: []
                                 )
+    end
+
+    def job_find
+        @job = Job.find(params[:id])
     end
 end

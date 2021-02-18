@@ -193,4 +193,52 @@ RSpec.describe Job, type: :model do
     end
 
   end
+
+  describe '#creator_of_the_same_company?' do
+    it 'true' do
+      company = Company.create!(email_suffix: '@rco.com.br')
+      employee = Employee.create!(email: 'romario@rco.com.br',
+                                  password: '123456',
+                                  company: company)
+
+      job = Job.create!(title: 'Programador Ruby',
+          description: 'Vaga para programador ruby',
+          quantity: 2,
+          level: 10,
+          lowest_salary: 1800,
+          highest_salary: 3000,
+          deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+          employee_id: employee.id,
+          company_id: company.id)
+
+      result = job.creator_of_the_same_company?(employee.company_id)
+      expect(result).to eq true
+    end
+
+    it 'false' do
+      company = Company.create!(email_suffix: '@rco.com.br')
+      employee = Employee.create!(email: 'romario@rco.com.br',
+                                  password: '123456',
+                                  company: company)
+
+      job = Job.create!(title: 'Programador Ruby',
+          description: 'Vaga para programador ruby',
+          quantity: 2,
+          level: 10,
+          lowest_salary: 1800,
+          highest_salary: 3000,
+          deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+          employee_id: employee.id,
+          company_id: company.id)
+      
+      company_other = Company.create!(email_suffix: '@treina.com.br')
+      employee_other = Employee.create!(email: 'rauena@treina.com.br',
+                                  password: '123456',
+                                  company: company_other)
+
+      result = job.creator_of_the_same_company?(employee_other.company_id)
+      expect(result).to eq false
+    end
+
+  end
 end
