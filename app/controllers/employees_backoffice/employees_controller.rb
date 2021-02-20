@@ -1,5 +1,7 @@
 class EmployeesBackoffice::EmployeesController < EmployeesBackofficeController
     before_action :employee_find, only: %i[show edit update]
+    before_action :authenticate_employee!
+
     def show
     end
 

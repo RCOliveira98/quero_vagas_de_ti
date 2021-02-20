@@ -21,9 +21,9 @@
         <i class="mr-1 fas fa-briefcase"></i> Vagas
       <% end %>
 
-      <a class="navbar-item">
+      <%= link_to companies_path, class: 'navbar-item' do %>
         <i class="mr-1 fas fa-building"></i> Empresas
-      </a>
+      <% end %>
 
     </div>
 
@@ -76,7 +76,7 @@
           <div class="navbar-dropdown">
             <a class="navbar-item">Candidato</a>
             <hr class="navbar-divider">
-            <%= link_to  "Recrutador", new_employee_session_path, class: "navbar-item" %>
+            <%= link_to  "Recrutador", employees_backoffice_root_path, class: "navbar-item" %>
           </div>
           
         </div>

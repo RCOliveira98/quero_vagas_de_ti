@@ -1,17 +1,14 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <%= link_to employees_backoffice_root_path, class: 'navbar-item' do %>
+    <%= link_to candidates_backoffice_root_path, class: 'navbar-item' do %>
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
     <% end %>
   </div>
 
   <div id="nav_employee" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        <i class="mr-1 fas fa-home"></i> Principal
-      </a>
 
-      <%= link_to employees_backoffice_jobs_path(), class: "navbar-item" do %>
+      <%= link_to '#', class: "navbar-item" do %>
         <i class="mr-1 fas fa-briefcase"></i> Vagas
       <% end %>
 
@@ -86,4 +83,4 @@
   </div>
 </nav>
 
-<h1>LAYOUT Employee</h1>
+<h1>LAYOUT Candidate</h1>

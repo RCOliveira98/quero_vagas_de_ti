@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
     protected
     def layout_by_resource
-        devise_controller? ? resource_class.to_s.downcase : 'application'
+        devise_controller? ? 'devise' : 'application'
     end
 end
