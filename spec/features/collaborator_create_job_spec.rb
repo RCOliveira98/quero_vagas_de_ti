@@ -15,7 +15,7 @@ feature 'collaborator create job' do
         
         login_as(employee, scope: :employee)
 
-        visit root_path()
+        visit employees_backoffice_root_path
         find('nav') do
             expect(page).to have_link('Vagas')
             click_on('Vagas')

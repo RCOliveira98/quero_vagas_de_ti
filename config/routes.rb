@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root "home#index"
 
   resources :companies, only: %i[index] do
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
       get 'jobs'
     end
   end
+
+  devise_for :candidates
 
   devise_for :employees, controllers: {
     registrations: 'employees/registrations'

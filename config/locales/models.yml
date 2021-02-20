@@ -1,6 +1,9 @@
 pt-BR:
   activerecord:
     models:
+      candidate:
+        one: Candidato
+        other: Candidatos
       employee:
         one: Colaborador
         other: Colaboradores
@@ -12,6 +15,11 @@ pt-BR:
         other: Vagas
 
     attributes:
+      candidate:
+        id: Id
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirmação de senha
       employee:
         id: Id
         name: Nome

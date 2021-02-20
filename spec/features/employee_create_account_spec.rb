@@ -7,11 +7,11 @@ feature 'employee create account' do
   scenario 'Success' do
     visit root_path
 
-    click_on 'Divulgar vagas'
+    click_on 'Recrutador'
 
-    expect(current_path).to eq new_employee_registration_path()
+    expect(current_path).to eq new_employee_session_path()
 
-    expect(page).to have_content('Novo usuário')
+    click_on 'Criar conta'
 
     within('form') do
       fill_in 'E-mail', with: 'romario.ti@rco.com.br'
@@ -30,9 +30,11 @@ feature 'employee create account' do
   scenario 'password confirmation failed' do
     visit root_path
 
-    click_on 'Divulgar vagas'
+    click_on 'Recrutador'
 
-    expect(current_path).to eq new_employee_registration_path()
+    expect(current_path).to eq new_employee_session_path()
+
+    click_on 'Criar conta'
 
     expect(page).to have_content('Novo usuário')
 
@@ -53,9 +55,11 @@ feature 'employee create account' do
   scenario 'the password is too short' do
     visit root_path
 
-    click_on 'Divulgar vagas'
+    click_on 'Recrutador'
 
-    expect(current_path).to eq new_employee_registration_path()
+    expect(current_path).to eq new_employee_session_path()
+
+    click_on 'Criar conta'
 
     expect(page).to have_content('Novo usuário')
     
@@ -76,9 +80,11 @@ feature 'employee create account' do
   scenario 'Password cannot be empty' do
     visit root_path
 
-    click_on 'Divulgar vagas'
+    click_on 'Recrutador'
 
-    expect(current_path).to eq new_employee_registration_path()
+    expect(current_path).to eq new_employee_session_path()
+
+    click_on 'Criar conta'
 
     expect(page).to have_content('Novo usuário')
     
@@ -101,9 +107,11 @@ feature 'employee create account' do
     Employee.create!(email: 'romario.ti@rco.com.br', password: '123456', company: company)
     visit root_path
 
-    click_on 'Divulgar vagas'
+    click_on 'Recrutador'
 
-    expect(current_path).to eq new_employee_registration_path()
+    expect(current_path).to eq new_employee_session_path()
+
+    click_on 'Criar conta'
 
     expect(page).to have_content('Novo usuário')
     
@@ -129,9 +137,11 @@ feature 'employee create account' do
   
     visit root_path
 
-    click_on 'Divulgar vagas'
+    click_on 'Recrutador'
 
-    expect(current_path).to eq new_employee_registration_path()
+    expect(current_path).to eq new_employee_session_path()
+
+    click_on 'Criar conta'
 
     emails.each do |email_key, email_value|
       expect(page).to have_content('Novo usuário')

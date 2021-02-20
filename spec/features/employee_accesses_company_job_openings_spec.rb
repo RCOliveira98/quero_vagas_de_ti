@@ -51,7 +51,7 @@ feature 'employee accesses company job openings' do
 
         login_as(employee, scope: :employee)
 
-        visit root_path
+        visit employees_backoffice_root_path
         click_link 'Vagas'
         expect(current_path).to eq(employees_backoffice_jobs_path)
         expect(page).to have_content('Vagas de trabalho')

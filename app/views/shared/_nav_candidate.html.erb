@@ -19,30 +19,14 @@
     </div>
 
     <div class="navbar-end">
-      <% if employee_signed_in? %>
+      <% if candidate_signed_in? %>
         <div class="navbar-item">
           <div class="buttons">
             <button class="button is-light">
-              <%= current_employee.email %>
+              <%= current_candidate["email"] %>
             </button>
-
-            <% if current_employee.admin? %>
-              <div class="navbar-item has-dropdown is-hoverable">
-
-                <a class="navbar-link">
-                  Perfil
-                </a>
-
-                <div class="navbar-dropdown">
-                  <%= link_to  "perfil do usuário", employees_backoffice_employee_path(current_employee), class: 'navbar-item' %>
-                  <hr class="navbar-divider">
-                  <%= link_to  "perfil da empresa", profile_employees_backoffice_company_path(current_employee.admin_company_id), class: 'navbar-item' %>
-                </div>
-                
-              </div>
-            <% end %>
             
-            <%= button_to destroy_employee_session_path, method: :delete, class: "button is-danger" do %>
+            <%= button_to destroy_candidate_session_path, method: :delete, class: "button is-danger" do %>
               <i class="fas fa-sign-out-alt"></i> Sair
             <% end %>
 

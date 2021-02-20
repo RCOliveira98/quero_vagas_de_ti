@@ -1,5 +1,5 @@
 class CandidatesBackoffice::HomeController < CandidatesBackofficeController
-    before_action :authenticate_employee!
+    before_action :authenticate_candidate!
 
     def index
     end
