@@ -4,6 +4,9 @@
             <%= form.label :term, "Buscar", class: 'label' %>
             <div class="field has-addons">
                 <div class="control">
+                    <%= link_to 'Todas', companies_path, class: 'button is-link is-outlined' %>
+                </div>
+                <div class="control">
                     <%= form.text_field :term, class: 'input' %>
                 </div>
                 <div class="control">
