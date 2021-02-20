@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'unauthenticated visitor accesses list of companies' do
     
-    scenario 'index' do
+    scenario 'index with many companies' do
         company_rebase = Company.create!(name: 'Rebase', email_suffix: '@rebase.com.br')
         company_vindi = Company.create!(name: 'Vindi', email_suffix: '@vindi.com.br')
         company_portal_solar = Company.create!(name: 'Portal solar', email_suffix: '@portalsolar.com.br')
@@ -36,6 +36,31 @@ feature 'unauthenticated visitor accesses list of companies' do
         end
         
 
+    end
+
+    scenario 'index with one company' do
+        company_rebase = Company.create!(name: 'Rebase', email_suffix: '@rebase.com.br')
+        company_vindi = Company.new(name: 'Vindi', email_suffix: '@vindi.com.br')
+
+        visit root_path
+        click_on 'Empresas'
+
+        expect(current_path).to eq(companies_path)
+        expect(page).to have_content('Empresas cadastradas')
+
+        within("#card_company#{company_rebase.id}") do
+            expect(page).to have_content(company_rebase.name)
+        end
+        expect(page).not_to have_content(company_vindi.name)
+    end
+
+    scenario 'index without company' do
+        visit root_path
+        click_on 'Empresas'
+
+        expect(current_path).to eq(companies_path)
+        expect(page).not_to have_content('Empresas cadastradas')
+        expect(page).to have_content('Nenhuma empresa cadastrada')
     end
 
 end

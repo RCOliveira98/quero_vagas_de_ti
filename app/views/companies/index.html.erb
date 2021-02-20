@@ -1,4 +1,8 @@
-<div><h1 class="has-text-primary title">Empresas cadastradas</h1></div>
+<div>
+    <h1 class="has-text-primary title">
+        <%= @companies.empty? ? 'Nenhuma empresa cadastrada' : 'Empresas cadastradas' %>
+    </h1>
+</div>
 
 <div class="columns is-multiline">
 
