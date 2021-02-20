@@ -37,7 +37,10 @@
 
                 <div class="card-footer">
                     <div class="card-footer-item">
-                        <%= link_to 'Conhecer+', '#', class: "button is-link is-outlined" %>
+                        <%= link_to 'vagas', profile_company_path(company),
+                        class: "button is-link is-outlined",
+                        id: "btn_company#{company.id}"
+                         %>
                     </div>
                 </div>
             </div>

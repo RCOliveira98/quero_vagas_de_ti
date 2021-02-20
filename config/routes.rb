@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :companies, only: %i[index] do
     get 'search_name', on: :collection
+    member do
+      get 'profile'
+      get 'jobs'
+    end
   end
 
   devise_for :employees, controllers: {

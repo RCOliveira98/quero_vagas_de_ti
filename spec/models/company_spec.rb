@@ -101,4 +101,158 @@ RSpec.describe Company, type: :model do
    end
  end
 
+ describe '#select_jobs_by_title' do
+  
+  it 'just a job vacancy' do
+    company = Company.create!(name: 'RCO-TECH', email_suffix: '@rcotech.com.br')
+    employee = Employee.create!(email: 'rco@rcotech.com.br', password: '123456', company: company)
+
+    job_java = Job.create!(title: 'Analista java',
+        description: 'Vaga para analista java',
+        quantity: 2,
+        level: 10,
+        lowest_salary: 1800,
+        highest_salary: 3000,
+        deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+        employee_id: employee.id,
+        company_id: company.id
+    )
+    job_ruby = Job.create!(title: 'Programador ruby',
+        description: 'Vaga para para programador ruby',
+        quantity: 1,
+        level: 10,
+        lowest_salary: 2200,
+        highest_salary: 3500,
+        deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+        employee_id: employee.id,
+        company_id: company.id
+    )
+
+    jobs = company.select_jobs_by_title('ruby')
+
+    expect(jobs.size).to eq 1
+    expect(jobs[0].id).not_to eq 1
+    expect(jobs[0].id).to eq 2
+  end
+
+  it 'application deadline' do
+    company = Company.create!(name: 'RCO-TECH', email_suffix: '@rcotech.com.br')
+    employee = Employee.create!(email: 'rco@rcotech.com.br', password: '123456', company: company)
+
+    job_java = Job.create!(title: 'Programador java',
+        description: 'Vaga para analista java',
+        quantity: 2,
+        level: 10,
+        lowest_salary: 1800,
+        highest_salary: 3000,
+        deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+        employee_id: employee.id,
+        company_id: company.id
+    )
+    job_ruby = Job.create!(title: 'Programador ruby',
+        description: 'Vaga para para programador ruby',
+        quantity: 1,
+        level: 10,
+        lowest_salary: 2200,
+        highest_salary: 3500,
+        deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+        employee_id: employee.id,
+        company_id: company.id
+    )
+
+    job_node = Job.create!(title: 'Programador node',
+      description: 'Vaga para para programador node',
+      quantity: 1,
+      level: 10,
+      lowest_salary: 2200,
+      highest_salary: 3500,
+      deadline_for_registration: DateTime.new(2021, 1, 20, 23, 59),
+      employee_id: employee.id,
+      company_id: company.id
+    )
+
+    job_python = Job.create!(title: 'Programador python',
+      description: 'Vaga para para programador python',
+      quantity: 1,
+      level: 10,
+      lowest_salary: 2200,
+      highest_salary: 3500,
+      deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+      employee_id: employee.id,
+      company_id: company.id
+    )
+
+    jobs = company.select_jobs_by_title('programador')
+
+    expect(jobs.size).to eq 3
+    jobs.each do |job|
+      expect(job.id).not_to eq 3
+    end
+    expect(jobs[0].id).to eq 1
+    expect(jobs[1].id).to eq 2
+    expect(jobs[2].id).to eq 4
+  end
+
+ end
+
+ describe '#select_jobs' do
+  it 'return list' do
+    company = Company.create!(name: 'RCO-TECH', email_suffix: '@rcotech.com.br')
+    employee = Employee.create!(email: 'rco@rcotech.com.br', password: '123456', company: company)
+
+    job_java = Job.create!(title: 'Programador java',
+        description: 'Vaga para analista java',
+        quantity: 2,
+        level: 10,
+        lowest_salary: 1800,
+        highest_salary: 3000,
+        deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+        employee_id: employee.id,
+        company_id: company.id
+    )
+    job_ruby = Job.create!(title: 'Programador ruby',
+        description: 'Vaga para para programador ruby',
+        quantity: 1,
+        level: 10,
+        lowest_salary: 2200,
+        highest_salary: 3500,
+        deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+        employee_id: employee.id,
+        company_id: company.id
+    )
+
+    job_node = Job.create!(title: 'Programador node',
+      description: 'Vaga para para programador node',
+      quantity: 1,
+      level: 10,
+      lowest_salary: 2200,
+      highest_salary: 3500,
+      deadline_for_registration: DateTime.new(2021, 1, 20, 23, 59),
+      employee_id: employee.id,
+      company_id: company.id
+    )
+
+    job_python = Job.create!(title: 'Programador python',
+      description: 'Vaga para para programador python',
+      quantity: 1,
+      level: 10,
+      lowest_salary: 2200,
+      highest_salary: 3500,
+      deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+      employee_id: employee.id,
+      company_id: company.id
+    )
+
+    jobs = company.select_jobs
+
+    expect(jobs.size).to eq 3
+    jobs.each do |job|
+      expect(job.id).not_to eq 3
+    end
+    expect(jobs[0].id).to eq 1
+    expect(jobs[1].id).to eq 2
+    expect(jobs[2].id).to eq 4
+  end
+ end
+
 end
