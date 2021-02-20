@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  resources :companies, only: %i[index]
+  resources :companies, only: %i[index] do
+    get 'search_name', on: :collection
+  end
 
   devise_for :employees, controllers: {
     registrations: 'employees/registrations'

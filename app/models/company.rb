@@ -16,5 +16,9 @@ class Company < ApplicationRecord
 
         company
     end
+
+    def self.select_by_name(name)
+        Company.where("name LIKE ?", "%#{name}%")
+    end
     
 end

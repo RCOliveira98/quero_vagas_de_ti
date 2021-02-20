@@ -1,0 +1,7 @@
+<div>
+    <p class="title has-text-primary">
+        <%= @companies.empty? ? 'Nenhuma empresa foi encontrada' : 'Resultado da busca:'  %>
+    </p>
+</div>
+
+<%= render partial: 'companies/shared/card' %>

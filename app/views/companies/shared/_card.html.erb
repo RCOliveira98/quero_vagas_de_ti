@@ -1,0 +1,44 @@
+<div class="columns">
+    <div class="column">
+        <%= form_with url: search_name_companies_path(), method: :get do |form| %>
+            <%= form.label :term, "Buscar", class: 'label' %>
+            <div class="field has-addons">
+                <div class="control">
+                    <%= form.text_field :term, class: 'input' %>
+                </div>
+                <div class="control">
+                    <%= form.submit "Pesquisar", class: 'button is-link is-outlined' %>
+                </div>
+            </div>
+            
+        <% end %>
+    </div>
+</div>
+
+<div class="columns is-multiline">
+
+    <% @companies.each do |company| %>
+        <div class="column is-12-mobile is-6-tablet is-3-desktop">
+            <div class="card mb-1" id="card_company<%= company.id %>">
+                <div class="card-header">
+                    <div class="card-header-title"><%= company.name || company.email_suffix %></div>
+                </div>
+
+                <div class="card-content">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                        <%= image_tag company.avatar.attached? && company.avatar || 'img_default_company.png' %>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="card-footer-item">
+                        <%= link_to 'Conhecer+', '#', class: "button is-link is-outlined" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+</div>

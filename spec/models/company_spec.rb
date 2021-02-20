@@ -51,4 +51,54 @@ RSpec.describe Company, type: :model do
 
  end
 
+ describe '.select_by_name' do
+   it 'returns several' do
+    Company.create!(name: 'Rebase tech', email_suffix: '@rebase.com.br')
+    Company.create!(name: 'Vindi', email_suffix: '@vindi.com.br')
+    Company.create!(name: 'Portal solar', email_suffix: '@portalsolar.com.br')
+    Company.create!(name: 'TechKonduto', email_suffix: '@konduto.com.br')
+    Company.create!(name: 'Smartfittech', email_suffix: '@smartfit.com.br')
+
+    companies = Company.select_by_name('tech')
+    
+    expect(companies.size).to eq 3
+
+    expect(companies[0].id).to eq 1
+    expect(companies[1].id).to eq 4
+    expect(companies[2].id).to eq 5
+
+    companies.each do |company|
+      expect(company.id).not_to eq 2
+      expect(company.id).not_to eq 3
+    end
+
+   end
+
+   it 'returns one' do
+    Company.create!(name: 'Rebase tech', email_suffix: '@rebase.com.br')
+    Company.create!(name: 'Vindi', email_suffix: '@vindi.com.br')
+    Company.create!(name: 'Portal solar', email_suffix: '@portalsolar.com.br')
+    Company.create!(name: 'TechKonduto', email_suffix: '@konduto.com.br')
+    Company.create!(name: 'Smartfittech', email_suffix: '@smartfit.com.br')
+
+    companies = Company.select_by_name('vindi')
+    
+    expect(companies.size).to eq 1    
+    expect(companies[0].id).to eq 2
+
+   end
+
+   it 'returns none' do
+    Company.create!(name: 'Rebase tech', email_suffix: '@rebase.com.br')
+    Company.create!(name: 'Vindi', email_suffix: '@vindi.com.br')
+    Company.create!(name: 'Portal solar', email_suffix: '@portalsolar.com.br')
+    Company.create!(name: 'TechKonduto', email_suffix: '@konduto.com.br')
+    Company.create!(name: 'Smartfittech', email_suffix: '@smartfit.com.br')
+
+    companies = Company.select_by_name('Treinadev')
+    
+    expect(companies.size).to eq 0   
+   end
+ end
+
 end
