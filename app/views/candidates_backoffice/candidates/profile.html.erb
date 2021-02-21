@@ -1,0 +1,23 @@
+<div class="card p-2">
+    <h1 class="title has-text-primary">Perfil do candidato</h1>
+
+    <div class="card-content">
+        <p>Nome: <%= @candidate.candidate_profile.name %></p>
+        <p>CPF: <%= @candidate.candidate_profile.cpf %></p>
+        <p>Telefone: <%= @candidate.candidate_profile.phone %></p>
+        <p>E-mail: <%= @candidate.email %></p>
+        <p>Endereço: 
+            <%= @candidate.candidate_profile.country %> -
+            <%= @candidate.candidate_profile.state %> -
+            <%= @candidate.candidate_profile.city %> - 
+            <%= @candidate.candidate_profile.zip_code %> - 
+            <%= @candidate.candidate_profile.neighborhood %> - 
+            <%= @candidate.candidate_profile.logradouro %> -
+        </p>
+        <p>Biografia: <%= @candidate.candidate_profile.biography %></p>
+    </div>
+
+    <div class="card-footer">
+        <div class="card-footer-item"><%= link_to 'Editar', 'x', class: 'button is-warning' %></div>
+    </div>
+</div>
