@@ -5,16 +5,16 @@ class Candidate < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :candidate_profile
+  accepts_nested_attributes_for :candidate_profile
 
   def profile?
     candidate_profile ? true : false
   end
 
   def build_profile
-    unless candidate_profile
-      return CandidateProfile.new(candidate_id: id)
+    unless profile?
+      build_candidate_profile
     end
-    candidate_profile
   end
 
 end

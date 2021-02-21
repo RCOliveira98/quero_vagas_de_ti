@@ -31,6 +31,6 @@ Rails.application.routes.draw do
 
   namespace :candidates_backoffice do
     root 'home#index'
-    get 'profile/:id', to: 'candidates#profile', as: :profile
+    resources :candidates, only: %i[show edit update]
   end
 end

@@ -1,0 +1,126 @@
+
+<div>
+    <h1 class="title has-text-primary">Editar perfil</h1>
+    <%= form_with(model: [:candidates_backoffice, @candidate], local: true) do |form| %>
+        <div class="columns is-multiline">
+            <div class="column is-12">
+                <% if @candidate.errors.any? %>
+                    <p class="has-text-danger">Encontramos o(s) seguinte(s) erro(s):</p>
+                    <div class="notification is-danger is-light">
+                        <ol>
+                            <% @candidate.errors.full_messages.each do |message| %>
+                                <li><strong><%= message %></strong></li>
+                            <% end %>
+                        </ol>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="column is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+                <div class="field">
+                    <%= form.label :email, class: 'label' %>
+                    <div class="control">
+                        <%= form.text_field :email, class: 'input' %>
+                    </div>
+                </div>
+            </div>
+
+            <%= form.fields_for :candidate_profile do |profile| %>
+                <div class="column is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+                    <div class="field">
+                        <%= profile.label :name, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :name, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+                    <div class="field">
+                        <%= profile.label :cpf, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :cpf, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+                    <div class="field">
+                        <%= profile.label :phone, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :phone, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-3-fullhd is-3-desktop is-3-tablet is-6-mobile">
+                    <div class="field">
+                        <%= profile.label :country, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :country, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-3-fullhd is-3-desktop is-3-tablet is-6-mobile">
+                    <div class="field">
+                        <%= profile.label :state, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :state, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-3-fullhd is-3-desktop is-3-tablet is-6-mobile">
+                    <div class="field">
+                        <%= profile.label :city, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :city, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-3-fullhd is-3-desktop is-3-tablet is-6-mobile">
+                    <div class="field">
+                        <%= profile.label :zip_code, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :zip_code, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column is-3-fullhd is-3-desktop is-3-tablet is-6-mobile">
+                    <div class="field">
+                        <%= profile.label :neighborhood, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :neighborhood, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-3-fullhd is-3-desktop is-3-tablet is-6-mobile">
+                    <div class="field">
+                        <%= profile.label :logradouro, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_field :logradouro, class: 'input' %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-6-fullhd is-6-desktop is-6-tablet is-12-mobile">
+                    <div class="field">
+                        <%= profile.label :biography, class: 'label' %>
+                        <div class="control">
+                            <%= profile.text_area :biography, class: 'textarea' %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+
+            <div class="column is-12">
+                <%= form.submit 'Atualizar', class: 'button is-link' %>
+            </div>
+        </div>
+    <% end %>
+</div>
+

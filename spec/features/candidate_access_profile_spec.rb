@@ -4,8 +4,8 @@ feature 'candidate access profile' do
 
     scenario 'login required' do
         candidate = Candidate.create!(email: 'rco@gmail.com', password: '123456')
-        visit candidates_backoffice_profile_path(candidate.id)
-        expect(current_path).not_to eq candidates_backoffice_profile_path(candidate.id)
+        visit candidates_backoffice_candidate_path(candidate.id)
+        expect(current_path).not_to eq candidates_backoffice_candidate_path(candidate.id)
         expect(current_path).to eq new_candidate_session_path
     end
     
@@ -19,7 +19,7 @@ feature 'candidate access profile' do
         visit candidates_backoffice_root_path
         click_on candidate.email
 
-        expect(current_path).to eq(candidates_backoffice_profile_path(candidate.id))
+        expect(current_path).to eq(candidates_backoffice_candidate_path(candidate.id))
         expect(page).to have_content('Perfil do candidato')
         expect(page).to have_content(candidate.candidate_profile.name)
         expect(page).to have_content(candidate.candidate_profile.phone)

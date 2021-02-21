@@ -4,6 +4,9 @@ pt-BR:
       candidate:
         one: Candidato
         other: Candidatos
+      candidate_profile:
+        one: Perfil do candidato
+        other: Perfis dos candidatos
       employee:
         one: Colaborador
         other: Colaboradores
@@ -20,6 +23,18 @@ pt-BR:
         email: E-mail
         password: Senha
         password_confirmation: Confirmação de senha
+      candidate_profile:
+        name: Nome
+        cpf: CPF
+        country: País
+        state: Estado
+        city: Cidade
+        email_suffix: Sufixo de e-mail
+        zip_code: Cep
+        neighborhood: Bairro
+        logradouro: Logradouro
+        phone: Telefone
+        biography: Biografia
       employee:
         id: Id
         name: Nome

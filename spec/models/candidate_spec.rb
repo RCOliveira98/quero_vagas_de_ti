@@ -18,7 +18,7 @@ RSpec.describe Candidate, type: :model do
     it 'empty profile is created' do
       candidate = Candidate.create!(email: 'rco@gmail.com.br', password: '123456')
       expect(candidate.candidate_profile).to be_falsey
-      candidate.candidate_profile = candidate.build_profile
+      candidate.build_profile
 
       expect(candidate.candidate_profile).to be_truthy
       expect(candidate.candidate_profile.candidate_id).to eq candidate.id

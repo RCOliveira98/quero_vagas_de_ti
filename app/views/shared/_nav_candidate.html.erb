@@ -22,7 +22,7 @@
       <% if candidate_signed_in? %>
         <div class="navbar-item">
           <div class="buttons">
-            <%= link_to current_candidate["email"] , candidates_backoffice_profile_path(current_candidate['id']), class: "button is-light" %>
+            <%= link_to current_candidate["email"] , candidates_backoffice_candidate_path(current_candidate['id']), class: "button is-light" %>
             
             <%= button_to destroy_candidate_session_path, method: :delete, class: "button is-danger" do %>
               <i class="fas fa-sign-out-alt"></i> Sair
