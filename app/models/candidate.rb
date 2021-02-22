@@ -6,6 +6,7 @@ class Candidate < ApplicationRecord
 
   has_one :candidate_profile
   accepts_nested_attributes_for :candidate_profile
+  has_many :applications
 
   def profile?
     candidate_profile ? true : false

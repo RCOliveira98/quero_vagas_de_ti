@@ -32,5 +32,12 @@ Rails.application.routes.draw do
   namespace :candidates_backoffice do
     root 'home#index'
     resources :candidates, only: %i[show edit update]
+    resources :applications, only: %i[index show new create edit update]
+    resources :jobs, only: %i[show]
+    resources :companies, only: %i[index] do
+      member do
+        get 'profile'
+      end
+    end
   end
 end

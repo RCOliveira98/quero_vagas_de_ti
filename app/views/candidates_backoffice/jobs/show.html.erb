@@ -1,0 +1,23 @@
+<div class="card mb-2 p-2" id="company_job<%= @job.id %>">
+    <strong><%= @job.title %></strong>
+    <p><%= @job.description %></p>
+    <p>Vagas abertas: <%= @job.quantity %></p>
+    <p>Recebendo candidaturas até: <%= @job.deadline_for_registration %></p>
+    <% unless @job.requirements.empty? %>
+        <p>Requisitos:
+        <% @job.requirements.each do |requirement| %>
+            <span class="has-text-danger m-1"><%= requirement.title %></span>
+        <% end %>
+        </p>
+    <% end %>
+
+    <div class="card-footer">
+        <div class="card-footer-item">
+            <%= button_to 'Confirmar candidatura',
+            candidates_backoffice_applications_path(application: 
+            {job_id: @job.id,
+            candidate_id: current_candidate['id']}),
+            method: :post, class: 'button is-success' %>
+        </div>
+    </div>
+</div>

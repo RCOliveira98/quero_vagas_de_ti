@@ -26,6 +26,7 @@ class CandidatesBackoffice::CandidatesController < CandidatesBackofficeControlle
     def params_candidate
         params.require(:candidate).permit(:email, :password, candidate_profile_attributes: [
             :id,
+            :cpf,
             :candidate_id,
             :name,
             :country,

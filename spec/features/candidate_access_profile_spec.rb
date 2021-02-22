@@ -11,7 +11,7 @@ feature 'candidate access profile' do
     
     scenario 'Success' do
         candidate = Candidate.create!(email: 'rco@gmail.com', password: '123456')
-        CandidateProfile.create!(candidate: candidate, name: 'Romário', phone: '1232321323')
+        CandidateProfile.create!(candidate: candidate, name: 'Romário', phone: '1232321323', cpf: '11122233344')
         candidate.reload
 
         login_as(candidate, scope: :candidate)

@@ -56,8 +56,8 @@
                     <% end %>
 
                     <div class="card-footer">
-                        <div class="card-footer-item">
-                            <%= link_to 'Candidatar-se', '#', class: 'button is-link is-outlined' %>
+                        <div class="card-footer-item" id="job_<%= job.id %>">
+                            <%= link_to 'Candidatar-se', candidates_backoffice_job_path(job), class: 'button is-link is-outlined' %>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ RSpec.describe Candidate, type: :model do
   describe '#profile?' do
     it 'return true' do
       candidate = Candidate.create!(email: 'rco@gmail.com.br', password: '123456')
-      CandidateProfile.create!(candidate: candidate, name: 'Romário', phone: '89994100120')
+      CandidateProfile.create!(candidate: candidate, name: 'Romário', phone: '89994100120', cpf: '11122233344')
       expect(candidate.profile?).to eq(true)
     end
 
@@ -26,7 +26,7 @@ RSpec.describe Candidate, type: :model do
 
     it 'existing profile is not overwritten' do
       candidate = Candidate.create!(email: 'rco@gmail.com.br', password: '123456')
-      CandidateProfile.create!(candidate: candidate, name: 'Romário', phone: '89994100120')
+      CandidateProfile.create!(candidate: candidate, name: 'Romário', phone: '89994100120', cpf: '11122233344')
 
       candidate.build_profile
       expect(candidate.candidate_profile.name).to eq 'Romário'

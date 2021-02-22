@@ -4,6 +4,7 @@ class Job < ApplicationRecord
 
   has_many :job_requirements
   has_many :requirements, through: :job_requirements
+  has_many :applications
 
   enum level: {junior: 10, pleno: 20, senior: 30}
 
