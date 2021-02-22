@@ -18,35 +18,20 @@
         <i class="mr-1 fas fa-building"></i> Empresas
       <% end %>
 
+      <% if candidate_signed_in? %>
+        <%= link_to companies_path, class: 'navbar-item' do %>
+          <i class="mr-1 fas fa-briefcase"></i> Vagas
+        <% end %>
+
+        <%= link_to companies_path, class: 'navbar-item' do %>
+          <i class="mr-1 fas fa-archive"></i> Candidaturas
+        <% end %>
+      <% end %>
+
     </div>
 
     <div class="navbar-end">
-      <% if employee_signed_in? %>
-        <div class="navbar-item">
-          <div class="buttons">
-            <button class="button is-light"><%= current_employee.email %></button>
-            <% if current_employee.admin? %>
-              <div class="navbar-item has-dropdown is-hoverable">
-
-                <a class="navbar-link">
-                  Perfil
-                </a>
-
-                <div class="navbar-dropdown">
-                  <%= link_to  "perfil do usuário", employees_backoffice_employee_path(current_employee), class: 'navbar-item' %>
-                  <hr class="navbar-divider">
-                  <%= link_to  "perfil da empresa", profile_employees_backoffice_company_path(current_employee.admin_company_id), class: 'navbar-item' %>
-                </div>
-                
-              </div>
-            <% end %>
-            <%= button_to destroy_employee_session_path, method: :delete, class: "button is-danger" do %>
-              <i class="fas fa-sign-out-alt"></i> Sair
-            <% end %>
-          </div>
-        </div>
-
-      <% elsif candidate_signed_in? %>
+      <% if candidate_signed_in? %>
         <div class="navbar-item">
           <div class="buttons">
             <%= link_to current_candidate["email"] , candidates_backoffice_candidate_path(current_candidate['id']), class: "button is-light" %>

@@ -9,7 +9,7 @@ feature 'admin edits company profile' do
 
     login_as(employee, scope: :employee)
 
-    visit root_path
+    visit employees_backoffice_root_path
     click_on 'perfil da empresa'
     click_on 'Editar'
 
@@ -38,7 +38,7 @@ feature 'admin edits company profile' do
 
     login_as(employee, scope: :employee)
 
-    visit root_path
+    visit employees_backoffice_root_path
     click_on 'perfil da empresa'
     click_on 'Editar'
 
@@ -66,7 +66,7 @@ feature 'admin edits company profile' do
 
     login_as(employee, scope: :employee)
 
-    visit root_path
+    visit employees_backoffice_root_path
     click_on 'perfil da empresa'
     click_on 'Editar'
 

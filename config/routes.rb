@@ -34,10 +34,5 @@ Rails.application.routes.draw do
     resources :candidates, only: %i[show edit update]
     resources :applications, only: %i[index show new create edit update]
     resources :jobs, only: %i[show]
-    resources :companies, only: %i[index] do
-      member do
-        get 'profile'
-      end
-    end
   end
 end

@@ -20,7 +20,7 @@ feature 'administrator accesses company profile' do
 
         login_as(employee, scope: :employee)
 
-        visit root_path
+        visit employees_backoffice_root_path
         click_on 'perfil da empresa'
 
         expect(current_path).to eq profile_employees_backoffice_company_path(id: 1)

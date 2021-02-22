@@ -16,7 +16,7 @@ feature 'collaborator show your profile' do
 
         login_as(employee, scope: :employee)
 
-        visit root_path
+        visit employees_backoffice_root_path
 
         within('nav') do
             expect(page).to have_content('Perfil')

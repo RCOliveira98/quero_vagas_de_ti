@@ -7,17 +7,17 @@
 
   <div id="nav_employee" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        <i class="mr-1 fas fa-home"></i> Principal
-      </a>
+      <%= link_to employees_backoffice_jobs_path(), class: "navbar-item" do %>
+        <i class="mr-1 fas fa-archive"></i> Candidaturas
+      <% end %>
+
+      <%= link_to employees_backoffice_jobs_path(), class: "navbar-item" do %>
+        <i class="mr-1 fas fa-envelope"></i> Convites
+      <% end %>
 
       <%= link_to employees_backoffice_jobs_path(), class: "navbar-item" do %>
         <i class="mr-1 fas fa-briefcase"></i> Vagas
       <% end %>
-
-      <a class="navbar-item">
-        <i class="mr-1 fas fa-building"></i> Empresas
-      </a>
 
     </div>
 
