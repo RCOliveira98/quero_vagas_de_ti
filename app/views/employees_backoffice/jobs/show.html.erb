@@ -1,0 +1,34 @@
+<div class="columns is-multiline is-centered">
+    <div class="column">
+        <div id="job<%= @job.id %>" class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    Código: <%= @job.id %> - <%= @job.title %>
+                </div>
+            </div>
+
+            <div class="card-content">
+                <p>Cadastrada em: <%= @job.created_at %></p>
+                <p>Descrição: <%= @job.description %></p>
+                <p>Faixa salarial: de <%= @job.lowest_salary %> atém <%= @job.highest_salary %></p>
+                <p>Nível de experiência: <%= @job.level %></p>
+                <p>Número de vagas: <%= @job.quantity %></p>
+                <p>Recebendo candidaturas até: <%= @job.deadline_for_registration %></p>
+                <p>Requisitos: 
+                    <% @job.requirements.each do |requirement| %>
+                        <span class="m-1"><%= requirement.title %></span>
+                    <% end %>
+                </p>
+                <p>Criador: <%= @job.employee.name || @job.employee.email %></p>
+            </div>
+
+            <div class="card-footer">
+                <div class="card-footer-item">
+                    <%= link_to 'Candidaturas', '#', class: 'm-1 button is-primary' %>
+                    <%= link_to 'Editar', '#', class: 'm-1 button is-warning' %>
+                    <%= link_to 'Voltar', '#', class: 'm-1 button is-dark' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,19 @@
 class EmployeesBackoffice::JobsController < EmployeesBackofficeController
     before_action :authenticate_employee!
     before_action :select_levels, only: %i[new edit]
-    before_action :job_find, only: %i[show edit update]
+    before_action :job_find, only: %i[edit update]
 
     def index
         @jobs = Job.select_unexpired_jobs_for_a_company(current_employee.company_id)
+    end
+
+    def show
+        begin
+            job_find()
+        rescue => exception
+            flash[:alert] = 'A vaga de trabalho que tentou acessar não existe!'
+            redirect_to employees_backoffice_jobs_path
+        end
     end
 
     def new
