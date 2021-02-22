@@ -87,7 +87,6 @@ feature 'employee sees a vacancy' do
         expect(page).to have_content(requirement.title)
       end
 
-      expect(page).to have_link('Candidaturas')
       expect(page).to have_link('Editar')
       expect(page).to have_link('Voltar')
     end
@@ -105,6 +104,54 @@ feature 'employee sees a vacancy' do
     visit employees_backoffice_job_path(1)
     expect(current_path).to eq employees_backoffice_jobs_path
     expect(page).to have_content 'A vaga de trabalho que tentou acessar não existe!'
+  end
+
+  scenario 'back button' do
+    company = Company.create!(email_suffix: '@rco.com.br')
+    employee = Employee.create!(email: 'romario@rco.com.br',
+                                    password: '123456',
+                                    company: company)
+                    
+    job = Job.create!(title: 'Programador Ruby',
+      description: 'Vaga para programador ruby',
+      quantity: 2,
+      level: 10,
+      lowest_salary: 1800,
+      highest_salary: 3000,
+      deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+      employee_id: employee.id,
+      company_id: company.id)
+    
+    login_as(employee, scope: :employee)
+
+    visit employees_backoffice_job_path(job)
+    click_on 'Voltar'
+    expect(current_path).to eq(employees_backoffice_jobs_path)
+
+  end
+
+  scenario 'edit button' do
+    company = Company.create!(email_suffix: '@rco.com.br')
+    employee = Employee.create!(email: 'romario@rco.com.br',
+                                    password: '123456',
+                                    company: company)
+                    
+    job = Job.create!(title: 'Programador Ruby',
+      description: 'Vaga para programador ruby',
+      quantity: 2,
+      level: 10,
+      lowest_salary: 1800,
+      highest_salary: 3000,
+      deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+      employee_id: employee.id,
+      company_id: company.id)
+    
+    login_as(employee, scope: :employee)
+
+    visit employees_backoffice_job_path(job)
+    click_on 'Editar'
+    expect(current_path).to eq(edit_employees_backoffice_job_path(job))
+
   end
 
 end
