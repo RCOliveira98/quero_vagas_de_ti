@@ -199,4 +199,38 @@ feature 'employee edit job' do
         expect(page).to have_content('Vaga de trabalho atualizada com sucesso')
     end
 
+    scenario 'employee disable jov vacancy' do
+        company = Company.create!(email_suffix: '@rco.com.br')
+        employee = Employee.create!(email: 'romario@rco.com.br', password: '123456', company: company)
+
+        job = Job.create!(title: 'Analista java',
+            description: 'Vaga para analista java',
+            quantity: 2,
+            level: 10,
+            lowest_salary: 1800,
+            highest_salary: 3000,
+            deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
+            employee_id: employee.id,
+            company_id: company.id)
+
+            login_as(employee, scope: :employee)
+
+            visit employees_backoffice_jobs_path()
+    
+            within("table tbody #tr_#{job.id}") do
+                click_on "Editar"
+            end
+    
+            expect(current_path).to eq(edit_employees_backoffice_job_path(job))
+            expect(page).to have_content('Editar vaga de trabalho')
+    
+            find('form') do
+                select('Cancelada', from: 'Status')
+                click_on 'Atualizar'
+            end
+    
+            expect(current_path).to eq(employees_backoffice_jobs_path)
+            expect(page).to have_content('Vaga de trabalho atualizada com sucesso')
+    end
+
 end

@@ -1,6 +1,7 @@
 class EmployeesBackoffice::JobsController < EmployeesBackofficeController
     before_action :authenticate_employee!
     before_action :select_levels, only: %i[new edit]
+    before_action :select_status, only: %i[new edit]
     before_action :job_find, only: %i[edit update]
 
     def index
@@ -57,10 +58,15 @@ class EmployeesBackoffice::JobsController < EmployeesBackofficeController
         @levels = Job.levels
     end
 
+    def select_status
+        @statuses = Job.statuses
+    end
+
     def job_params
         params.require(:job).permit(:title,
                                     :description,
                                     :level,
+                                    :status,
                                     :lowest_salary,
                                     :highest_salary,
                                     :quantity,

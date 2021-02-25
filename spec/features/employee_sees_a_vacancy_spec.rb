@@ -63,6 +63,7 @@ feature 'employee sees a vacancy' do
       description: 'Vaga para programador ruby',
       quantity: 2,
       level: 10,
+      status: 10,
       lowest_salary: 1800,
       highest_salary: 3000,
       deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
@@ -79,6 +80,7 @@ feature 'employee sees a vacancy' do
       expect(page).to have_content(job.lowest_salary)
       expect(page).to have_content(job.highest_salary)
       expect(page).to have_content(job.level)
+      expect(page).to have_content(job.status)
       expect(page).to have_content(job.quantity)
       expect(page).to have_content(job.deadline_for_registration)
       expect(page).to have_content(job.created_at)

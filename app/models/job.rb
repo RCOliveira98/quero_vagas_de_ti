@@ -7,6 +7,7 @@ class Job < ApplicationRecord
   has_many :applications
 
   enum level: {junior: 10, pleno: 20, senior: 30}
+  enum status: {aberta: 10, cancelada: 20, encerrada: 30}
 
   validates :title, :description, :level, :lowest_salary, :highest_salary, :quantity, :deadline_for_registration, presence: true
 

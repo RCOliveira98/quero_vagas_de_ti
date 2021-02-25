@@ -64,7 +64,17 @@
                 <div class="control">
                     <div class="select">
                         <%= form.collection_select :level, @levels.map{ |level| [level.first, level.first.humanize] }, :first, :second %>
-                        <%#= form.collection_select(:level, @levels, :second, :first) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-4-fullhd is-4-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+                <%= form.label :status, class: 'label' %>
+                <div class="control">
+                    <div class="select">
+                        <%= form.collection_select :status, @statuses.map{ |status| [status.first, status.first.humanize] }, :first, :second %>
                     </div>
                 </div>
             </div>

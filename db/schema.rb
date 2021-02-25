@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_21_125027) do
+ActiveRecord::Schema.define(version: 2021_02_25_124517) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -102,6 +102,16 @@ ActiveRecord::Schema.define(version: 2021_02_21_125027) do
     t.index ["employee_id"], name: "index_company_admins_on_employee_id"
   end
 
+  create_table "decline_applications", force: :cascade do |t|
+    t.integer "application_id", null: false
+    t.integer "employee_id", null: false
+    t.text "justification", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["application_id"], name: "index_decline_applications_on_application_id"
+    t.index ["employee_id"], name: "index_decline_applications_on_employee_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -138,6 +148,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_125027) do
     t.datetime "deadline_for_registration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 10
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["employee_id"], name: "index_jobs_on_employee_id"
   end
@@ -156,6 +167,8 @@ ActiveRecord::Schema.define(version: 2021_02_21_125027) do
   add_foreign_key "candidate_profiles", "candidates"
   add_foreign_key "company_admins", "companies"
   add_foreign_key "company_admins", "employees"
+  add_foreign_key "decline_applications", "applications"
+  add_foreign_key "decline_applications", "employees"
   add_foreign_key "job_requirements", "jobs"
   add_foreign_key "job_requirements", "requirements"
   add_foreign_key "jobs", "companies"
