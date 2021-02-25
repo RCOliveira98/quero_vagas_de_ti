@@ -1,7 +1,7 @@
 class EmployeesBackoffice::JobsController < EmployeesBackofficeController
     before_action :authenticate_employee!
-    before_action :select_levels, only: %i[new edit]
-    before_action :select_status, only: %i[new edit]
+    before_action :select_levels, only: %i[new edit create]
+    before_action :select_status, only: %i[new edit create]
     before_action :job_find, only: %i[edit update]
 
     def index
@@ -48,6 +48,7 @@ class EmployeesBackoffice::JobsController < EmployeesBackofficeController
             redirect_to employees_backoffice_jobs_path
         else
             select_levels()
+            select_status()
             render :edit
         end
     end

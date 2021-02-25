@@ -80,11 +80,12 @@ RSpec.describe Job, type: :model do
         employee_id: employee.id,
         company_id: company.id
       )
-      # id 5
+      # id 5 - não deve aparecer na lista pq foi cancelado
       Job.create!(title: 'Programador ruby',
         description: 'Vaga para programador ruby',
         quantity: 2,
         level: 10,
+        status: 20,
         lowest_salary: 1800,
         highest_salary: 3000,
         deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
@@ -95,14 +96,14 @@ RSpec.describe Job, type: :model do
 
       jobs = Job.select_unexpired_jobs_for_a_company(company.id)
 
-      expect(jobs.size).to eq 3
+      expect(jobs.size).to eq 2
       expect(jobs[0].id).to eq 1
       expect(jobs[1].id).to eq 3
-      expect(jobs[2].id).to eq 5
 
       jobs.each do |job|
         expect(job.id).not_to eq 2
         expect(job.id).not_to eq 4
+        expect(job.id).not_to eq 5
       end
     end
 

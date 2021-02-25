@@ -13,7 +13,7 @@ class Job < ApplicationRecord
 
   def self.select_unexpired_jobs_for_a_company(company_id)
     Job.includes(:company).where(
-      "company_id = ? AND deadline_for_registration >= ?", company_id, Time.now
+      "company_id = ? AND deadline_for_registration >= ? AND status = ?", company_id, Time.now, 10
     )
   end
 
