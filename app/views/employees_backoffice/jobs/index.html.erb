@@ -8,6 +8,7 @@
       <th><%= Job.human_attribute_name("level") %></th>
       <th><%= Job.human_attribute_name("quantity") %></th>
       <th><%= Job.human_attribute_name("deadline_for_registration") %></th>
+      <th><%= Job.human_attribute_name("status") %></th>
       <th><%= link_to  "Cadastrar vaga", new_employees_backoffice_job_path(), class: 'button is-success' %></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
     <% @jobs.each do |job| %>
     <tr id="tr_<%= job.id %>">
       <td><%= job.title %></td>
+      <td><%= job.status %></td>
       <td><%= job.description %></td>
       <td><%= job.level %></td>
       <td><%= job.quantity %></td>

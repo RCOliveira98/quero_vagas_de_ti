@@ -17,7 +17,7 @@ feature 'employee accesses company job openings' do
         job = Job.create!(title: 'Analista java',
                     description: 'Vaga para analista java',
                     quantity: 2,
-                    level: 10,
+                    level: 20,
                     lowest_salary: 1800,
                     highest_salary: 3000,
                     deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
@@ -41,7 +41,7 @@ feature 'employee accesses company job openings' do
         job_employee_company_other = Job.create!(title: 'Programador elixir',
             description: 'Vaga para para programador elixir',
             quantity: 2,
-            level: 10,
+            level: 30,
             lowest_salary: 2000,
             highest_salary: 3500,
             deadline_for_registration: DateTime.new(2021, 3, 20, 23, 59),
@@ -56,14 +56,20 @@ feature 'employee accesses company job openings' do
         expect(current_path).to eq(employees_backoffice_jobs_path)
         expect(page).to have_content('Vagas de trabalho')
 
-        within('table') do
+        within("table #tr_#{job.id}") do
             expect(page).to have_content(job.title)
             expect(page).to have_content(job.description)
+            expect(page).to have_content(job.status)
+        end
+
+        within("table #tr_#{job_created_admin.id}") do
             expect(page).to have_content(job_created_admin.title)
             expect(page).to have_content(job_created_admin.description)
-            expect(page).not_to have_content(job_employee_company_other.title)
-            expect(page).not_to have_content(job_employee_company_other.description)
+            expect(page).to have_content(job_created_admin.status)
         end
+
+        expect(page).not_to have_content(job_employee_company_other.title)
+        expect(page).not_to have_content(job_employee_company_other.description)
 
     end
 end

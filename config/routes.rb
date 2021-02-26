@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         get 'profile'
       end
     end
+
+    resources :applications, only: %i[index]
   end
 
   namespace :candidates_backoffice do

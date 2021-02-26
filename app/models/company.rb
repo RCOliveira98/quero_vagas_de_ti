@@ -23,13 +23,14 @@ class Company < ApplicationRecord
     end
 
     def select_jobs
-        Job.where('deadline_for_registration >= ? AND company_id = ?', Time.now, id)
+        Job.where('deadline_for_registration >= ? AND company_id = ? AND status = ?', Time.now, id, 10)
     end
 
     def select_jobs_by_title(title)
         Job.where('company_id = ? AND 
                 title LIKE ? AND 
-                deadline_for_registration >= ?', id, "%#{title}%", Time.now)
+                deadline_for_registration >= ? AND
+                status = ?', id, "%#{title}%", Time.now, 10)
     end
     
 end

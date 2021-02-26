@@ -1,0 +1,39 @@
+<h1>Listagem das candidaturas</h1>
+
+<% if @applications.empty? %>
+  <div class="card">
+    <article class="message is-warning">
+      <div class="message-body">
+        <strong>Até agora nenhuma candidatura foi recebida</strong>
+      </div>
+    </article>
+  </div>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Vaga</th>
+        <th>Código</th>
+        <th>Candidato</th>
+        <th>AÇÕES</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @applications.each do |application| %>
+      <tr id="tr_<%= application.id %>">
+        <td><%= application.job.title %></td>
+        <td><%= application.id %></td>
+        <td><%= application.candidate.id %></td>
+        <td>
+          <% if application.pending_evaluation? %>
+            <%= link_to 'Analisar candidatura', '#', class: 'button is-warning' %>
+          <% else %>
+            <p>Já foi analisado!</p>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

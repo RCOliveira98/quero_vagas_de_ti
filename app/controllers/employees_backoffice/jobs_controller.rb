@@ -5,7 +5,7 @@ class EmployeesBackoffice::JobsController < EmployeesBackofficeController
     before_action :job_find, only: %i[edit update]
 
     def index
-        @jobs = Job.select_unexpired_jobs_for_a_company(current_employee.company_id)
+        @jobs = Job.where('company_id = ?', current_employee.company_id)
     end
 
     def show
