@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :applications, only: %i[index]
+    resources :applications, only: %i[index show]
   end
 
   namespace :candidates_backoffice do

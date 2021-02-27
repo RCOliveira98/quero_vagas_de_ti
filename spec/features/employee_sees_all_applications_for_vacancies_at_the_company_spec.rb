@@ -61,19 +61,19 @@ feature 'employee sees all applications for vacancies at the company' do
         visit employees_backoffice_applications_path
         expect(current_path).to eq employees_backoffice_applications_path
 
-        within("#tr_#{first_application.id}") do
+        within("#card_#{first_application.id}") do
             expect(page).to have_content(first_application.job.title)
             expect(page).to have_content(first_application.id)
             expect(page).to have_content('Analisar candidatura') 
         end
 
-        within("#tr_#{second_application.id}") do
+        within("#card_#{second_application.id}") do
             expect(page).to have_content(second_application.job.title)
             expect(page).to have_content(second_application.id)
             expect(page).to have_content('Analisar candidatura') 
         end
 
-        within("#tr_#{last_application.id}") do
+        within("#card_#{last_application.id}") do
             expect(page).to have_content(last_application.job.title)
             expect(page).to have_content(last_application.id)
             expect(page).to have_content('Analisar candidatura') 
@@ -133,7 +133,7 @@ feature 'employee sees all applications for vacancies at the company' do
         visit employees_backoffice_applications_path
         expect(current_path).to eq employees_backoffice_applications_path
 
-        within("#tr_#{first_application.id}") do
+        within("#card_#{first_application.id}") do
             expect(page).to have_content(first_application.job.title)
             expect(page).to have_content(first_application.id)
             expect(page).to have_content('Analisar candidatura') 
@@ -142,7 +142,7 @@ feature 'employee sees all applications for vacancies at the company' do
         expect(page).not_to have_content(second_application.job.title)
         expect(page).not_to have_content(second_application.id)
 
-        within("#tr_#{last_application.id}") do
+        within("#card_#{last_application.id}") do
             expect(page).to have_content(last_application.job.title)
             expect(page).to have_content(last_application.id)
             expect(page).to have_content('Analisar candidatura') 

@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-header">
+        <div class="card-header-title">
+            <strong class="has-text-primary">
+                <i class="fas fa-stamp"></i> Avaliar candidatura</i>
+            </strong>
+        </div>
+    </div>
+
+    <div class="card-content">
+        <p>id da candidatura: <%= @application.id %> - data:  <%= @application.created_at %></p>
+        <hr>
+        <h2 class="subtitle">Candidato</h2>
+        <p>id do candidato: <%= @application.candidate.id %> - <%= @application.candidate.candidate_profile&.name %></p>
+        <p><%= @application.candidate.candidate_profile&.biography %></p>
+        <p><%= @application.candidate.email %></p>
+        <%= link_to 'Perfil do candidato', '#' %>
+        <hr>
+        <h2 class="subtitle">Vaga</h2>
+        <p>Código: <%= @application.job.id %> - data: <%= @application.job.created_at %> - Status da vaga: <%= @application.job.status %></p>
+        <p><strong><%= @application.job.title %></strong> - <%= @application.job.description %></p>
+        <p>Faixa salarial: de <%= @application.job.lowest_salary %> até <%= @application.job.highest_salary %></p>
+        <p>Nível de experiência: <%= @application.job.level %> - Número de vagas: <%= @application.job.quantity %></p>
+        <p>Recebendo candidaturas até: <%= @application.job.deadline_for_registration %></p>
+        <p>Requisitos: 
+            <% @application.job.requirements.each do |requirement| %>
+                <span class="m-1"><%= requirement.title %></span>
+            <% end %>
+        </p>
+    </div>
+
+    <div class="card-footer">
+        <div class="card-footer-item">
+            <%= link_to 'Aprovar', '#', class: 'button is-success' %>
+        </div>
+
+        <div class="card-footer-item">
+            <%= link_to 'Reprovar', '#', class: 'button is-danger' %>
+        </div>
+
+        <div class="card-footer-item">
+            <%= link_to 'Voltar', '#', class: 'button is-link' %>
+        </div>
+    </div>
+</div>
