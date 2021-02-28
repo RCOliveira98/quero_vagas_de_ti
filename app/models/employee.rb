@@ -9,6 +9,7 @@ class Employee < ApplicationRecord
   belongs_to :company
   has_one :company_admin
   has_many :decline_applications
+  has_many :proposals
 
   def admin?
     CompanyAdmin.find_by(employee: id)
