@@ -22,6 +22,9 @@ pt-BR:
       job:
         one: Vaga
         other: Vagas
+      proposal:
+        one: Proposta
+        other: Propostas
 
     attributes:
       application:
@@ -78,3 +81,10 @@ pt-BR:
         highest_salary: Maior salário
         deadline_for_registration: Prazo para inscrição
         requirements: Requisitos
+      proposal:
+        id: Id
+        application: Candidatura
+        employee: Responsável
+        message: Mensagem
+        salary_proposal: Proposta salarial
+        start_date: Data de início

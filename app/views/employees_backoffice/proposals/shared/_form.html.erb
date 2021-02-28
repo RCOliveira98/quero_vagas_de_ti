@@ -1,0 +1,38 @@
+<%= form_with(model: [:employees_backoffice, @proposal], local: true) do |form| %>
+
+    <% if @proposal.errors.any? %>
+        <p class="has-text-danger">Encontramos o(s) seguinte(s) erro(s):</p>
+        <div class="notification is-danger is-light">
+            <ol>
+                <% @proposal.errors.full_messages.each do |message| %>
+                    <li><strong><%= message %></strong></li>
+                <% end %>
+            </ol>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= form.label :message, class: 'label' %>
+        <div class="control">
+            <%= form.text_field :message, class: 'input'%>
+        </div>
+    </div>
+
+    <div class="field">
+        <%= form.label :salary_proposal, class: 'label' %>
+        <div class="control">
+            <%= form.number_field :salary_proposal, class: 'input'%>
+        </div>
+    </div>
+
+    <div class="field">
+        <%= form.label :start_date, class: 'label' %> 
+        <div class="control">
+            <%= form.datetime_local_field :start_date, class: 'input' %>
+        </div>
+    </div>
+
+    <div class="control">
+        <%= form.submit button_title, class: 'button is-link'%>
+    </div>
+<% end %>
