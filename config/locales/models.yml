@@ -1,12 +1,18 @@
 pt-BR:
   activerecord:
     models:
+      application:
+        one: Candidatura
+        other: Candidaturas
       candidate:
         one: Candidato
         other: Candidatos
       candidate_profile:
         one: Perfil do candidato
         other: Perfis dos candidatos
+      decline_application:
+        one: Declinar candidatura
+        other: Declinar candidaturas
       employee:
         one: Colaborador
         other: Colaboradores
@@ -18,6 +24,9 @@ pt-BR:
         other: Vagas
 
     attributes:
+      application:
+        candidate: Candidato
+        job: Vaga de trabalho 
       candidate:
         id: Id
         email: E-mail
@@ -35,6 +44,11 @@ pt-BR:
         logradouro: Logradouro
         phone: Telefone
         biography: Biografia
+      decline_application:
+        id: Id
+        application: Candidatura
+        employee: Autor
+        justification: Justificativa
       employee:
         id: Id
         name: Nome

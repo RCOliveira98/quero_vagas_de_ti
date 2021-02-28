@@ -6,8 +6,10 @@ class EmployeesBackoffice::ApplicationsController < EmployeesBackofficeControlle
         company = Company.find(current_employee.company_id)
         
         company.jobs.each do |job|
-            job.applications.each do |app|
-                @applications.push(app)
+            unless job.cancelada?
+                job.applications.each do |app|
+                    @applications.push(app)
+                end 
             end
         end
         @applications

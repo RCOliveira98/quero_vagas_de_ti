@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     end
 
     resources :applications, only: %i[index show]
+    get ':application/decline_applications/new', to: 'decline_applications#new', as: :decline_application
+    post ':application/decline_applications/create', to: 'decline_applications#create', as: :decline_applications
+    resources :decline_applications, only: %i[create]
   end
 
   namespace :candidates_backoffice do
