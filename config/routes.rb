@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     root 'home#index'
     resources :candidates, only: %i[show edit update]
     resources :applications, only: %i[index show new create edit update]
+    resources :proposals, only: %i[index show]
     resources :jobs, only: %i[show]
   end
 end

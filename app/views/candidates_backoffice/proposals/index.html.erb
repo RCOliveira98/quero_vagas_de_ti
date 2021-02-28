@@ -1,0 +1,35 @@
+<div class="columns is-multiline">
+    <div class="column is-12">
+        <h1 class="title has-text-primary">Minhas propostas</h1>
+    </div>
+
+    <div class="column is-12">
+        <% if @proposals.empty? %>
+            <div class="card">
+                <h1 class="title">Nenhuma proposta até o momento</h1>
+            </div>
+        <% else %>
+            <% @proposals.each do |proposal| %>
+                <div class="card" id="proposal_<%= proposal.id %>">
+                        <div class="card-header">
+                            <div class="card-header-title"><%= proposal.application.job.title %></div>
+                        </div>
+
+                        <div class="card-content">
+                            <p>Código: <%= proposal.id %> - data:  <%= proposal.created_at %> </p>
+                            <p>Autor: <%= proposal.employee.email %> </p>
+                            <p>Proposta: <%= proposal.salary_proposal %> - início: <%= proposal.start_date %></p>
+                            <p><%= proposal.message %></p>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="card-footer-item">
+                                <%= link_to 'Aceitar', '#', class: 'button is-success outlined m-1' %>
+                                <%= link_to 'Recusar', '#', class: 'button is-danger outlined m-1' %>
+                            </div>
+                        </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

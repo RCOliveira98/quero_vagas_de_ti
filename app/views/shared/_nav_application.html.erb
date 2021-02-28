@@ -23,8 +23,12 @@
           <i class="mr-1 fas fa-briefcase"></i> Vagas
         <% end %>
 
-        <%= link_to companies_path, class: 'navbar-item' do %>
+        <%= link_to candidates_backoffice_applications_path, class: 'navbar-item' do %>
           <i class="mr-1 fas fa-archive"></i> Candidaturas
+        <% end %>
+
+        <%= link_to candidates_backoffice_proposals_path, class: 'navbar-item' do %>
+          <i class="fa fa-envelope" aria-hidden="true"></i> Propostas
         <% end %>
       <% end %>
 

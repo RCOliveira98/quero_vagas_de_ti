@@ -27,7 +27,11 @@
               <% if application.pending_evaluation? %>
                 <%= link_to 'Analisar candidatura', employees_backoffice_application_path(application), class: 'button is-warning', id: "btn_#{application.id}" %>
               <% else %>
-                <button class="button is-link">Já foi analisado!</button>
+                <% if application.proposal %>
+                  <button class="button is-success">Proposta enviada!</button>
+                <% else %>
+                  <button class="button is-danger">Candidatura declinada!</button>
+                <% end %>
               <% end %>
             </div>
           </div>
