@@ -1,9 +1,11 @@
 <h1 class="title has-text-primary">Minhas candidaturas</h1>
 
-<% if @applications.size > 0 %>
+<% if @applications.empty? %>
+    <p class="subtitle">Você ainda não se candidatou a nenhuma vaga</p>
+<% else %>
     <div class="columns is-multiline">
         <% @applications.each do |application| %>
-            <div class="column is-12-mobile is-6-tablet is-4-desktop">
+            <div id="application_<%= application.id %>" class="column is-12-mobile is-6-tablet is-4-desktop">
                 <div class="card p-2">
                     <div class="card-header has-background-primary">
                         <div class="card-header-title has-text-white"><%= application.job.title %></div>
@@ -14,6 +16,22 @@
                         <p><%= application.job.description %></p>
                         <p>Candidatura: <%= application.created_at %></p>
                         <p>Atualizada: <%= application.updated_at %></p>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="card-footer-item">
+                            <% if application.pending_evaluation? %>
+                                <p class="has-text-link">Aguardando resposta</p>
+                            <% else %>
+                                <% if application.proposal %>
+                                    <p class="has-text-success">Proposta recebida</p>
+                                <% else %>
+                                    <p><span class="has-text-danger">Candidatura declinada</span> - 
+                                    Motivo: <%= application.decline_application.justification %>
+                                    </p>
+                                <% end %>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>
