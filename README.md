@@ -33,3 +33,14 @@ cadastrar;
 
 - Diagrama de Entidade Relacionamento disponível na plataforma [dbdesigner](https://dbdesigner.page.link/eTPjgPFeWSdobDv68)
 - Organização das tarefas dispnível na plataforma [Trello](https://trello.com/invite/b/eGf7jfJ3/cbd25b6b53977768d47031ac5abdd61e/mvp)
+
+## Como usar
+* Clone o projeto
+* Dentro do diretório do projeto execute o comando: rails db:seed
+Após isso você terá:
+* empresa treinadev cadastrada. Usuário de acesso: romario@treinadev.com.br e senha 123456
+* empresa alura cadastrada. Usuário de acesso: rauena@alura.com.br e senha 123456
+* candidata Maria cadastrada. Usuário de acesso: maria@gmail.com.br e senha 123456
+* candidato Jose cadastrada. Usuário de acesso: jose@gmail.com.br e senha 123456
+* Algumas vagas de trabalho cadastradas
+* Algumas candidaturas cadastradas
